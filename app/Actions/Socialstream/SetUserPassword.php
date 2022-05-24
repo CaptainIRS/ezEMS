@@ -19,7 +19,7 @@ class SetUserPassword implements SetsUserPasswords
     public function set($user, array $input)
     {
         Validator::make($input, [
-            'password' => ['required', 'string', new Password, 'confirmed'],
+            'password' => ['required', 'string', new Password(), 'confirmed'],
         ])->validateWithBag('setPassword');
 
         $user->forceFill([

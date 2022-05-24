@@ -37,7 +37,8 @@ class Venue extends Model
     /**
      * Get the stages hosted by this venue.
      */
-    public function stages() {
+    public function stages()
+    {
         return $this->hasMany(Stage::class);
     }
 }
