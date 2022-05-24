@@ -33,6 +33,10 @@ use Laravel\Jetstream\Team as JetstreamTeam;
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Event[] $events
+ * @property-read int|null $events_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
+ * @property-read int|null $payments_count
  */
 class Team extends JetstreamTeam
 {
@@ -67,4 +71,20 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    /**
+     * Get the payments made by the team.
+     */
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    /**
+     * Get the events this team is participating in.
+     */
+    public function events()
+    {
+        return $this->belongsToMany(Event::class)->using(EventTeam::class);
+    }
 }

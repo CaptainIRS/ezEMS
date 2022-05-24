@@ -69,6 +69,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Profile|null $profile
  */
 class User extends Authenticatable
 {
@@ -134,5 +135,13 @@ class User extends Authenticatable
         }
 
         return $this->getPhotoUrl();
+    }
+
+    /**
+     * Get the profile of the user.
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }
