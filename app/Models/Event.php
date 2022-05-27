@@ -21,9 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $cluster_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Cluster $cluster
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Announcement[] $announcements
  * @property-read int|null $announcements_count
+ * @property-read \App\Models\Cluster $cluster
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Faq[] $faqs
  * @property-read int|null $faqs_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Event newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Event newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Event query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Event whereClusterId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Event whereContact($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Event whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Event whereDescription($value)

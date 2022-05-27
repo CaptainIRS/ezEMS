@@ -19,10 +19,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $degree
  * @property string|null $year_of_study
  * @property int $user_id
- * @property int $college_id
+ * @property int|null $college_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\College $college
+ * @property-read \App\Models\College|null $college
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\ProfileFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()

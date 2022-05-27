@@ -23,6 +23,11 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $payment_status
+ * @property string|null $checkout_session
+ * @property-read \App\Models\Stage|null $stage
+ * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereCheckoutSession($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EventTeam wherePaymentStatus($value)
  */
 class EventTeam extends Pivot
 {

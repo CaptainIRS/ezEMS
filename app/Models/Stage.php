@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Event $event
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventTeam[] $eventTeams
+ * @property-read int|null $event_teams_count
  * @property-read \App\Models\Venue $venue
  * @method static \Database\Factories\StageFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Stage newModelQuery()
