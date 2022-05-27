@@ -35,6 +35,15 @@ class Venue extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'description', 'location', 'capacity'
+    ];
+
+    /**
      * Get the stages hosted by this venue.
      */
     public function stages()

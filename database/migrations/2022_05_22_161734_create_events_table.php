@@ -25,6 +25,8 @@ return new class () extends Migration {
             $table->decimal('registration_fee')->nullable();
             $table->text('contact')->nullable();
 
+            $table->foreignId('cluster_id')->constrained();
+
             $table->timestamps();
         });
     }

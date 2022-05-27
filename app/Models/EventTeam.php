@@ -26,5 +26,11 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  */
 class EventTeam extends Pivot
 {
-    //
+    /**
+     * Get the stage the team is in
+     */
+    public function stage()
+    {
+        return $this->belongsTo(Stage::class);
+    }
 }

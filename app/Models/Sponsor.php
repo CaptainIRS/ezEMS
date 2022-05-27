@@ -40,6 +40,15 @@ class Sponsor extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'slug', 'tagline', 'url', 'type', 'edition_id'
+    ];
+
+    /**
      * Get the edition this sponsor belongs to.
      */
     public function edition()

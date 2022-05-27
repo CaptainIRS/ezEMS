@@ -32,6 +32,15 @@ class News extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'content', 'edition_id'
+    ];
+
+    /**
      * Get the edition these news belong to.
      */
     public function edition()

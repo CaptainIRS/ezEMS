@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Filament\Resources\EventResource\RelationManagers;
+
+use App\Models\Stage;
+use App\Models\User;
+use Filament\Forms;
+use Filament\Resources\Form;
+use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
+use Filament\Resources\Table;
+use Filament\Tables;
+
+class TeamsRelationManager extends BelongsToManyRelationManager
+{
+    protected static string $relationship = 'teams';
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\BooleanColumn::make('personal_team'),
+                Tables\Columns\TextColumn::make('payment_status'),
+                Tables\Columns\TextColumn::make('stage_id')->label('Stage'),
+            ])
+            ->filters([])
+            ->headerActions([]);
+    }
+}

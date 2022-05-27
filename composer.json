@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "doctrine/dbal": "^3.3",
         "filament/filament": "^2.0",
+        "filament/spatie-laravel-settings-plugin": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "joelbutcher/socialstream": "^3.4",
         "laravel/cashier": "^13.11",
@@ -15,7 +16,10 @@
         "laravel/passport": "^10.4",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "spatie/laravel-settings": "^2.4",
+        "staudenmeir/belongs-to-through": "^2.5",
+        "staudenmeir/eloquent-has-many-deep": "^1.7"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",

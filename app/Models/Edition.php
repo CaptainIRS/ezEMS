@@ -37,6 +37,15 @@ class Edition extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'year', 'start_time', 'end_time'
+    ];
+
+    /**
      * Get the categories for the edition.
      */
     public function categories()

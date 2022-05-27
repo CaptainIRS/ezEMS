@@ -49,6 +49,25 @@ class Profile extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'gender',
+        'nationality',
+        'address',
+        'city',
+        'state',
+        'pin_code',
+        'contact_number',
+        'degree',
+        'year_of_study',
+        'user_id',
+        'college_id'
+    ];
+
+    /**
      * Get the user that owns the profile.
      */
     public function user()

@@ -26,7 +26,7 @@ return new class () extends Migration {
             $table->string('year_of_study')->nullable();
 
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('college_id')->constrained();
+            $table->foreignId('college_id')->nullable()->constrained();
 
             $table->timestamps();
         });

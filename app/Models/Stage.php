@@ -43,6 +43,15 @@ class Stage extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'slug', 'description', 'start_time', 'end_time', 'location_in_venue', 'event_id', 'venue_id'
+    ];
+
+    /**
      * Get the event this stage belongs to.
      */
     public function event()
@@ -56,5 +65,13 @@ class Stage extends Model
     public function venue()
     {
         return $this->belongsTo(Venue::class);
+    }
+
+    /**
+     * Get the event teams that belong to this stage.
+     */
+    public function eventTeams()
+    {
+        return $this->hasMany(EventTeam::class);
     }
 }

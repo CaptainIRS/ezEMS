@@ -33,6 +33,15 @@ class Payment extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'transaction_id', 'event_id', 'team_id'
+    ];
+
+    /**
      * Get the event these payments belong to.
      */
     public function event()

@@ -36,6 +36,15 @@ class Category extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'slug', 'description', 'edition_id'
+    ];
+
+    /**
      * Get the edition this category belongs to.
      */
     public function edition()

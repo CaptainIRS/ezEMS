@@ -18,8 +18,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $max_participants
  * @property string|null $registration_fee
  * @property string|null $contact
+ * @property int $cluster_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Cluster $cluster
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Announcement[] $announcements
  * @property-read int|null $announcements_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Faq[] $faqs
@@ -53,6 +55,15 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'slug', 'description', 'rules', 'prizes', 'resources', 'max_participants', 'registration_fee', 'contact', 'cluster_id'
+    ];
 
     /**
      * Get the announcements for the event.
@@ -99,6 +110,18 @@ class Event extends Model
      */
     public function teams()
     {
-        return $this->belongsToMany(Team::class)->using(EventTeam::class);
+        return $this->belongsToMany(Team::class)
+            ->using(EventTeam::class)
+            ->withPivot('stage_id')
+            ->withPivot('payment_status')
+            ->withPivot('checkout_session');
+    }
+
+    /**
+     * Get the cluster this event belongs to.
+     */
+    public function cluster()
+    {
+        return $this->belongsTo(Cluster::class);
     }
 }

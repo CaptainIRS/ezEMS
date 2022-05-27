@@ -15,6 +15,13 @@ return new class () extends Migration {
         Schema::create('event_team', function (Blueprint $table) {
             $table->id();
 
+            $table->enum('payment_status', [
+                'paid',
+                'unpaid'
+            ])->nullable();
+
+            $table->string('checkout_session')->nullable();
+
             $table->foreignId('stage_id')->nullable()->constrained();
 
             $table->foreignId('event_id')->constrained();

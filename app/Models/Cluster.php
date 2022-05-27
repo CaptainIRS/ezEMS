@@ -34,10 +34,27 @@ class Cluster extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'slug', 'description', 'category_id'
+    ];
+
+    /**
      * Get the category this cluster belongs to.
      */
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get the events that belong to this cluster.
+     */
+    public function events()
+    {
+        return $this->hasMany(Event::class);
     }
 }

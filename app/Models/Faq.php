@@ -32,6 +32,15 @@ class Faq extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'question', 'answer', 'event_id'
+    ];
+
+    /**
      * Get the event these FAQs belong to.
      */
     public function event()

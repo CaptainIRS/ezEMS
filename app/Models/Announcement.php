@@ -32,6 +32,15 @@ class Announcement extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'content', 'event_id'
+    ];
+
+    /**
      * Get the event that owns the announcement.
      */
     public function event()

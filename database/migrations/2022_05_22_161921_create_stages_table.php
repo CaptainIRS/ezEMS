@@ -18,8 +18,8 @@ return new class () extends Migration {
             $table->string('name');
             $table->string('slug');
             $table->text('description');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
             $table->string('location_in_venue')->nullable();
 
             $table->foreignId('event_id')->constrained();

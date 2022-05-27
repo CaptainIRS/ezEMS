@@ -59,6 +59,7 @@ class Team extends JetstreamTeam
     protected $fillable = [
         'name',
         'personal_team',
+        'user_id',
     ];
 
     /**
@@ -85,6 +86,10 @@ class Team extends JetstreamTeam
      */
     public function events()
     {
-        return $this->belongsToMany(Event::class)->using(EventTeam::class);
+        return $this->belongsToMany(Event::class)
+            ->using(EventTeam::class)
+            ->withPivot('stage_id')
+            ->withPivot('payment_status')
+            ->withPivot('checkout_session');
     }
 }
