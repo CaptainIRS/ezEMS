@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cluster extends Model
 {
     use HasFactory;
+    use \Znck\Eloquent\Traits\BelongsToThrough;
 
     /**
      * The attributes that are mass assignable.
@@ -58,5 +59,13 @@ class Cluster extends Model
     public function events()
     {
         return $this->hasMany(Event::class);
+    }
+
+    /**
+     * Get the edition that this cluster belongs to
+     */
+    public function edition()
+    {
+        return $this->belongsToThrough(Edition::class, Category::class);
     }
 }

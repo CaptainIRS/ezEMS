@@ -17,7 +17,9 @@ class EditionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'year' => $this->faker->year,
+            'start_time' => $this->faker->dateTimeBetween('-1 year', '+1 year'),
+            'end_time' => $this->faker->dateTimeBetween('-1 year', '+1 year'),
         ];
     }
 }

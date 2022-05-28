@@ -105,7 +105,7 @@ class EventResource extends Resource
                                 'orderedList',
                             ])
                             ->maxLength(65535),
-                    ])
+                    ]),
 
             ])->columns(2);
     }
@@ -118,14 +118,6 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('cluster.category.name')->label('Category'),
                 Tables\Columns\TextColumn::make('cluster.name'),
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('description')->limit('50')->wrap(),
-                Tables\Columns\TextColumn::make('rules')->limit('50')->wrap(),
-                Tables\Columns\TextColumn::make('prizes')->limit('50')->wrap(),
-                Tables\Columns\TextColumn::make('resources')->limit('50')->wrap(),
-                Tables\Columns\TextColumn::make('max_participants'),
-                Tables\Columns\TextColumn::make('registration_fee')->money('inr'),
-                Tables\Columns\TextColumn::make('contact')->limit('50')->wrap(),
             ])
             ->filters([
                 //

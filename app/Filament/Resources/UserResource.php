@@ -10,6 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Filters\TernaryFilter;
 
 class UserResource extends Resource
 {
@@ -49,6 +50,8 @@ class UserResource extends Resource
                             ->numeric()
                             ->minValue(1)
                             ->maxValue(5),
+                        Forms\Components\BelongsToSelect::make('college_id')
+                            ->relationship('college', 'name'),
                     ])
             ]);
     }
@@ -60,11 +63,10 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime(),Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
             ])
             ->filters([
-                //
+                TernaryFilter::make('email_verified_at')->nullable()->label('Email Verified'),
             ]);
     }
 

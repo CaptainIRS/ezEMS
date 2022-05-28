@@ -47,9 +47,8 @@ class SponsorsRelationManager extends BelongsToManyRelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('tagline'),
-                Tables\Columns\TextColumn::make('url'),
+                Tables\Columns\TextColumn::make('tagline')->limit('50')->wrap(),
+                Tables\Columns\TextColumn::make('url')->limit('50')->wrap(),
                 Tables\Columns\TextColumn::make('type'),
             ])
             ->filters([

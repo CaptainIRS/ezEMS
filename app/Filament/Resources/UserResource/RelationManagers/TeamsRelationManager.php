@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
+use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
@@ -18,8 +19,11 @@ class TeamsRelationManager extends BelongsToManyRelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
+                Forms\Components\Select::make('user_id')
+                    ->label('Owner')
+                    ->options(User::all()->pluck('name', 'id'))
                     ->required(),
+                    // ->searchable(/),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),

@@ -43,16 +43,15 @@ class CategoriesRelationManager extends HasManyRelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('description')->limit('50')->wrap(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
+            ->actions(array_merge($table->getActions(), [
                 Tables\Actions\Action::make('edit')
                     ->url(fn (Category $record): string => CategoryResource::getUrl('edit', $record))
                     ->icon('heroicon-s-pencil'),
-            ]);
+            ]));
     }
 }

@@ -31,12 +31,8 @@ class AnnouncementsRelationManager extends HasManyRelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('content'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                Tables\Columns\TextColumn::make('title')->limit('50')->wrap(),
+                Tables\Columns\TextColumn::make('content')->limit('50')->wrap(),
             ])
             ->filters([
                 //

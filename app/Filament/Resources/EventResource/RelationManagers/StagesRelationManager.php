@@ -31,14 +31,15 @@ class StagesRelationManager extends HasManyRelationManager
                     ->required()
                     ->maxLength(255),
                 Forms\Components\DateTimePicker::make('start_time')
+                    ->displayFormat('d M Y H:i')
                     ->required(),
                 Forms\Components\DateTimePicker::make('end_time')
+                    ->displayFormat('d M Y H:i')
                     ->required(),
                 Forms\Components\BelongsToSelect::make('venue_id')
                     ->relationship('venue', 'name')
                     ->required(),
                 Forms\Components\TextInput::make('location_in_venue')
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
                     ->required()
@@ -51,8 +52,7 @@ class StagesRelationManager extends HasManyRelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('description')->limit('50')->wrap(),
                 Tables\Columns\TextColumn::make('start_time')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('end_time')

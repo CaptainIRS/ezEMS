@@ -5,12 +5,15 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
+use App\Models\Edition;
 use Closure;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Str;
 
 class CategoryResource extends Resource
@@ -50,11 +53,11 @@ class CategoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('edition.year'),
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('description')->limit('50')->wrap(),
             ])
             ->filters([
-                //
+                SelectFilter::make('year')
+                    ->default(Edition::count())
+                    ->column('edition.year'),
             ]);
     }
 

@@ -48,7 +48,6 @@ class SponsorsRelationManager extends HasManyRelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('edition.year'),
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('tagline'),
                 Tables\Columns\TextColumn::make('url'),
                 Tables\Columns\TextColumn::make('type'),

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Filament\Facades\Filament;
+use Filament\Forms\Components\RichEditor;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,6 +30,12 @@ class AppServiceProvider extends ServiceProvider
                 'Events',
                 'Users',
                 'Data',
+            ]);
+        });
+
+        RichEditor::configureUsing(function (RichEditor $editor): void {
+            $editor->extraAttributes([
+               'style' => 'max-width: calc(100vw - 80px)',
             ]);
         });
     }

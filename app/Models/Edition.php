@@ -68,4 +68,12 @@ class Edition extends Model
     {
         return $this->hasMany(Sponsor::class);
     }
+
+    /**
+     * Get the clusters in this edition.
+     */
+    public function clusters()
+    {
+        return $this->hasManyThrough(Cluster::class, Category::class);
+    }
 }

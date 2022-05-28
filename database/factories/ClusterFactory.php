@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cluster>
@@ -16,8 +17,13 @@ class ClusterFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->word . ' ' . $this->faker->word;
+        $slug = Str::slug($name);
+
         return [
-            //
+            'name' => $name,
+            'slug' => $slug,
+            'description' => $this->faker->paragraph,
         ];
     }
 }

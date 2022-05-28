@@ -31,8 +31,10 @@ class EditionResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\DateTimePicker::make('start_time')
+                            ->displayFormat('d M Y H:i')
                             ->required(),
                         Forms\Components\DateTimePicker::make('end_time')
+                            ->displayFormat('d M Y H:i')
                             ->required(),
                     ])
             ])->columns(2);

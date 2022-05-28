@@ -137,15 +137,6 @@ entity venues {
     capacity
 }
 
-entity payments {
-    * id
-    --
-    * transaction_id
-    --
-    * event_id
-    * team_id
-}
-
 entity teams {
     * id
     --
@@ -163,6 +154,8 @@ entity event_team {
     * id
     --
     stage_id
+    payment_status
+    checkout_session
     --
     * event_id
     * team_id
@@ -183,16 +176,13 @@ events          ||--o{      faqs
 events          ||--o{      stages
 events          }o--||      clusters
 clusters        }o--||      categories
-events          ||--o{      payments
 events          ||--o{      event_sponsor
 sponsors        ||--o{      event_sponsor
 events          ||--o{      event_team
 teams           ||--o{      event_team
 events          ||--o{      announcements
 editions        ||--o{      news
-users           ||--o{      payments
 stages          }o--||      venues
-teams           ||--o{      payments
 teams           ||--o{      team_user
 users           ||--o{      team_user
 users           ||--||      profiles

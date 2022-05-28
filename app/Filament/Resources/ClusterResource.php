@@ -6,12 +6,16 @@ use App\Filament\Resources\ClusterResource\Pages;
 use App\Filament\Resources\ClusterResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Cluster;
+use App\Models\Edition;
 use Closure;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Str;
 
@@ -51,15 +55,11 @@ class ClusterResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('category.edition.year')->label('Year'),
+                Tables\Columns\TextColumn::make('edition.year')->label('Year'),
                 Tables\Columns\TextColumn::make('category.name')->label('Category'),
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('description')->limit('50')->wrap(),
             ])
-            ->filters([
-                //
-            ]);
+            ->filters([]);
     }
 
     public static function getRelations(): array
