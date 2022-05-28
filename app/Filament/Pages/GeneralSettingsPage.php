@@ -4,7 +4,6 @@ namespace App\Filament\Pages;
 
 use App\Settings\GeneralSettings;
 use Filament\Forms;
-use Filament\Facades\Filament;
 use Filament\Pages\SettingsPage;
 
 class GeneralSettingsPage extends SettingsPage

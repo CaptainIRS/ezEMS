@@ -3,9 +3,7 @@
 namespace App\Filament\Resources\CategoryResource\RelationManagers;
 
 use App\Filament\Resources\ClusterResource;
-use App\Filament\Resources\EventResource;
 use App\Models\Cluster;
-use App\Models\Event;
 use Closure;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -49,7 +47,7 @@ class ClustersRelationManager extends HasManyRelationManager
             ])
             ->actions([
                 Tables\Actions\Action::make('edit')
-                    ->url(fn (Cluster $record): string => ClusterResource::getUrl('edit', $record))
+                    ->url(fn(Cluster $record): string => ClusterResource::getUrl('edit', $record))
                     ->icon('heroicon-s-pencil')
             ]);
     }

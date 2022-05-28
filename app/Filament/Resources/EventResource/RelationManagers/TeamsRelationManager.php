@@ -4,7 +4,6 @@ namespace App\Filament\Resources\EventResource\RelationManagers;
 
 use App\Models\Event;
 use App\Models\Stage;
-use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
@@ -40,7 +39,7 @@ class TeamsRelationManager extends BelongsToManyRelationManager
                 Tables\Columns\TextColumn::make('payment_status'),
                 Tables\Columns\TextColumn::make('stage_id')
                     ->label('Stage')
-                    ->formatStateUsing(fn (string $state): string => Stage::find($state)->name),
+                    ->formatStateUsing(fn(string $state): string => Stage::find($state)->name),
             ])
             ->filters([])
             ->headerActions([]);

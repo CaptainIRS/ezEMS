@@ -16,7 +16,6 @@ use App\Models\Stage;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Venue;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TestSeeder extends Seeder

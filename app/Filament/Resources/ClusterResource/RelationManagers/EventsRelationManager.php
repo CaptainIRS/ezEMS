@@ -42,7 +42,7 @@ class EventsRelationManager extends HasManyRelationManager
                 Forms\Components\Textarea::make('resources')
                     ->maxLength(65535),
                 Forms\Components\TextInput::make('max_participants'),
-                Forms\Components\TextInput::make('registration_fee')->mask(fn (Forms\Components\TextInput\Mask $mask) => $mask->money('₹', ',', 2)),
+                Forms\Components\TextInput::make('registration_fee')->mask(fn(Forms\Components\TextInput\Mask $mask) => $mask->money('₹', ',', 2)),
                 Forms\Components\Textarea::make('contact')
                     ->maxLength(65535),
             ]);
@@ -57,7 +57,7 @@ class EventsRelationManager extends HasManyRelationManager
             ])
             ->actions([
                 Tables\Actions\Action::make('edit')
-                    ->url(fn (Event $record): string => EventResource::getUrl('edit', $record))
+                    ->url(fn(Event $record): string => EventResource::getUrl('edit', $record))
                     ->icon('heroicon-s-pencil')
             ]);
     }

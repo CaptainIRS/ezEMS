@@ -5,13 +5,11 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('bootstrap')
     ->exclude('storage')
     ->notPath('_ide_helper.php')
-    ->in(__DIR__)
-;
+    ->in(__DIR__);
 
 $config = new PhpCsFixer\Config();
 return $config->setRules([
-        '@PSR12' => true,
-        'array_syntax' => ['syntax' => 'short'],
-    ])
-    ->setFinder($finder)
-;
+    '@PSR12' => true,
+    'array_syntax' => ['syntax' => 'short'],
+])
+    ->setFinder($finder);

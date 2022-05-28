@@ -3,19 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ClusterResource\Pages;
-use App\Filament\Resources\ClusterResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Cluster;
-use App\Models\Edition;
 use Closure;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Str;
 
@@ -32,8 +27,8 @@ class ClusterResource extends Resource
         return $form
             ->schema([
                 Forms\Components\BelongsToSelect::make('category_id')
-                    ->relationship('category', 'name', fn (Builder $query) => $query)
-                    ->getOptionLabelFromRecordUsing(fn (Category $record) => $record->edition()->get()->first()->year . ' → ' . $record->name)
+                    ->relationship('category', 'name', fn(Builder $query) => $query)
+                    ->getOptionLabelFromRecordUsing(fn(Category $record) => $record->edition()->get()->first()->year . ' → ' . $record->name)
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()

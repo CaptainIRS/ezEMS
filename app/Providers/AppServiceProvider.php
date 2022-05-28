@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
         RichEditor::configureUsing(function (RichEditor $editor): void {
             $editor->extraAttributes([
-               'style' => 'max-width: calc(100vw - 80px)',
+                'style' => 'max-width: calc(100vw - 80px)',
             ]);
         });
     }
