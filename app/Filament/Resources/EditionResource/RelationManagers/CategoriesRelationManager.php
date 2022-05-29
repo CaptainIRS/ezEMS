@@ -50,7 +50,7 @@ class CategoriesRelationManager extends HasManyRelationManager
             ])
             ->actions(array_merge($table->getActions(), [
                 Tables\Actions\Action::make('edit')
-                    ->url(fn(Category $record): string => CategoryResource::getUrl('edit', $record))
+                    ->url(fn (Category $record): string => CategoryResource::getUrl('edit', $record))
                     ->icon('heroicon-s-pencil'),
             ]));
     }

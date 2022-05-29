@@ -27,8 +27,8 @@ class ClusterResource extends Resource
         return $form
             ->schema([
                 Forms\Components\BelongsToSelect::make('category_id')
-                    ->relationship('category', 'name', fn(Builder $query) => $query)
-                    ->getOptionLabelFromRecordUsing(fn(Category $record) => $record->edition()->get()->first()->year . ' → ' . $record->name)
+                    ->relationship('category', 'name', fn (Builder $query) => $query)
+                    ->getOptionLabelFromRecordUsing(fn (Category $record) => $record->edition()->get()->first()->year . ' → ' . $record->name)
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
