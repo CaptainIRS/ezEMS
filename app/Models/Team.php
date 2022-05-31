@@ -2,7 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\TeamFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
@@ -15,27 +21,26 @@ use Laravel\Jetstream\Team as JetstreamTeam;
  * @property int $user_id
  * @property string $name
  * @property bool $personal_team
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User|null $owner
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TeamInvitation[] $teamInvitations
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read User|null $owner
+ * @property-read Collection|TeamInvitation[] $teamInvitations
  * @property-read int|null $team_invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read Collection|User[] $users
  * @property-read int|null $users_count
- * @method static \Database\Factories\TeamFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team query()
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
- * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Event[] $events
+ * @method static TeamFactory factory(...$parameters)
+ * @method static Builder|Team newModelQuery()
+ * @method static Builder|Team newQuery()
+ * @method static Builder|Team query()
+ * @method static Builder|Team whereCreatedAt($value)
+ * @method static Builder|Team whereId($value)
+ * @method static Builder|Team whereName($value)
+ * @method static Builder|Team wherePersonalTeam($value)
+ * @method static Builder|Team whereUpdatedAt($value)
+ * @method static Builder|Team whereUserId($value)
+ * @mixin Eloquent
+ * @property-read Collection|Event[] $events
  * @property-read int|null $events_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
  * @property-read int|null $payments_count
  */
 class Team extends JetstreamTeam
@@ -74,17 +79,11 @@ class Team extends JetstreamTeam
     ];
 
     /**
-     * Get the payments made by the team.
-     */
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
-
-    /**
      * Get the events this team is participating in.
+     *
+     * @returns BelongsToMany<Event>
      */
-    public function events()
+    public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class)
             ->using(EventTeam::class)

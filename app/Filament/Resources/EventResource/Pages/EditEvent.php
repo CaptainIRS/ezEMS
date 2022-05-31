@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\EventResource\Pages;
 
 use App\Filament\Resources\EventResource;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Pages\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
@@ -18,7 +19,7 @@ class EditEvent extends EditRecord
                 ->action(function () {
                     try {
                         $this->record->delete();
-                    } catch (\Exception $e) {
+                    } catch (Exception) {
                         Filament::notify('danger', 'Could not delete record. Delete the child records first.');
                     }
                 })

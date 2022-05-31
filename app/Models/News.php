@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\NewsFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\News
@@ -12,20 +17,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property string $content
  * @property int $edition_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Edition $edition
- * @method static \Database\Factories\NewsFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|News newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|News newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|News query()
- * @method static \Illuminate\Database\Eloquent\Builder|News whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|News whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|News whereEditionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|News whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|News whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|News whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Edition $edition
+ * @method static NewsFactory factory(...$parameters)
+ * @method static Builder|News newModelQuery()
+ * @method static Builder|News newQuery()
+ * @method static Builder|News query()
+ * @method static Builder|News whereContent($value)
+ * @method static Builder|News whereCreatedAt($value)
+ * @method static Builder|News whereEditionId($value)
+ * @method static Builder|News whereId($value)
+ * @method static Builder|News whereTitle($value)
+ * @method static Builder|News whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class News extends Model
 {
@@ -42,8 +47,10 @@ class News extends Model
 
     /**
      * Get the edition these news belong to.
+     *
+     * @returns BelongsTo<Edition>
      */
-    public function edition()
+    public function edition(): BelongsTo
     {
         return $this->belongsTo(Edition::class);
     }

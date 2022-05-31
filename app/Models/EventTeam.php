@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\EventTeam
@@ -11,30 +15,32 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @property int|null $stage_id
  * @property int $event_id
  * @property int $team_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam query()
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereEventId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereStageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereTeamId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|EventTeam newModelQuery()
+ * @method static Builder|EventTeam newQuery()
+ * @method static Builder|EventTeam query()
+ * @method static Builder|EventTeam whereCreatedAt($value)
+ * @method static Builder|EventTeam whereEventId($value)
+ * @method static Builder|EventTeam whereId($value)
+ * @method static Builder|EventTeam whereStageId($value)
+ * @method static Builder|EventTeam whereTeamId($value)
+ * @method static Builder|EventTeam whereUpdatedAt($value)
+ * @mixin Eloquent
  * @property string|null $payment_status
  * @property string|null $checkout_session
- * @property-read \App\Models\Stage|null $stage
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam whereCheckoutSession($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTeam wherePaymentStatus($value)
+ * @property-read Stage|null $stage
+ * @method static Builder|EventTeam whereCheckoutSession($value)
+ * @method static Builder|EventTeam wherePaymentStatus($value)
  */
 class EventTeam extends Pivot
 {
     /**
      * Get the stage the team is in
+     *
+     * @returns BelongsTo<Stage>
      */
-    public function stage()
+    public function stage(): BelongsTo
     {
         return $this->belongsTo(Stage::class);
     }

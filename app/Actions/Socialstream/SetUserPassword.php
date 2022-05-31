@@ -4,6 +4,7 @@ namespace App\Actions\Socialstream;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use JoelButcher\Socialstream\Contracts\SetsUserPasswords;
 use Laravel\Fortify\Rules\Password;
 
@@ -15,8 +16,9 @@ class SetUserPassword implements SetsUserPasswords
      * @param mixed $user
      * @param array $input
      * @return void
+     * @throws ValidationException
      */
-    public function set($user, array $input)
+    public function set($user, array $input): void
     {
         Validator::make($input, [
             'password' => ['required', 'string', new Password(), 'confirmed'],

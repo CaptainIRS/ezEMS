@@ -25,7 +25,7 @@ class TestSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         College::factory()->count(20)->create();
         User::factory()->withPersonalTeam()->has(Profile::factory())->count(20)->create();

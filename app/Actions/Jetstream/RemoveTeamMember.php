@@ -17,8 +17,10 @@ class RemoveTeamMember implements RemovesTeamMembers
      * @param mixed $team
      * @param mixed $teamMember
      * @return void
+     * @throws AuthorizationException
+     * @throws ValidationException
      */
-    public function remove($user, $team, $teamMember)
+    public function remove($user, $team, $teamMember): void
     {
         $this->authorize($user, $team, $teamMember);
 
@@ -36,8 +38,9 @@ class RemoveTeamMember implements RemovesTeamMembers
      * @param mixed $team
      * @param mixed $teamMember
      * @return void
+     * @throws AuthorizationException
      */
-    protected function authorize($user, $team, $teamMember)
+    protected function authorize(mixed $user, mixed $team, mixed $teamMember): void
     {
         if (!Gate::forUser($user)->check('removeTeamMember', $team) &&
             $user->id !== $teamMember->id) {
@@ -51,8 +54,9 @@ class RemoveTeamMember implements RemovesTeamMembers
      * @param mixed $teamMember
      * @param mixed $team
      * @return void
+     * @throws ValidationException
      */
-    protected function ensureUserDoesNotOwnTeam($teamMember, $team)
+    protected function ensureUserDoesNotOwnTeam(mixed $teamMember, mixed $team): void
     {
         if ($teamMember->id === $team->owner->id) {
             throw ValidationException::withMessages([

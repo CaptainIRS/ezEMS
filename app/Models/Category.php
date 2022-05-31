@@ -2,8 +2,15 @@
 
 namespace App\Models;
 
+use Database\Factories\CategoryFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Category
@@ -13,23 +20,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $slug
  * @property string $description
  * @property int $edition_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Cluster[] $clusters
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Cluster[] $clusters
  * @property-read int|null $clusters_count
- * @property-read \App\Models\Edition $edition
- * @method static \Database\Factories\CategoryFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Category query()
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereEditionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property-read Edition $edition
+ * @method static CategoryFactory factory(...$parameters)
+ * @method static Builder|Category newModelQuery()
+ * @method static Builder|Category newQuery()
+ * @method static Builder|Category query()
+ * @method static Builder|Category whereCreatedAt($value)
+ * @method static Builder|Category whereDescription($value)
+ * @method static Builder|Category whereEditionId($value)
+ * @method static Builder|Category whereId($value)
+ * @method static Builder|Category whereName($value)
+ * @method static Builder|Category whereSlug($value)
+ * @method static Builder|Category whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Category extends Model
 {
@@ -46,16 +53,20 @@ class Category extends Model
 
     /**
      * Get the edition this category belongs to.
+     *
+     * @returns BelongsTo<Edition>
      */
-    public function edition()
+    public function edition(): BelongsTo
     {
         return $this->belongsTo(Edition::class);
     }
 
     /**
      * Get the clusters under this category.
+     *
+     * @returns HasMany<Cluster>
      */
-    public function clusters()
+    public function clusters(): HasMany
     {
         return $this->hasMany(Cluster::class);
     }

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\VenueResource\Pages;
 
 use App\Filament\Resources\VenueResource;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Pages\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
@@ -18,7 +19,7 @@ class EditVenue extends EditRecord
                 ->action(function () {
                     try {
                         $this->record->delete();
-                    } catch (\Exception $e) {
+                    } catch (Exception) {
                         Filament::notify('danger', 'Could not delete record. Delete the child records first.');
                     }
                 })

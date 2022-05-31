@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\EventSponsor
@@ -10,17 +13,17 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @property int $id
  * @property int $event_id
  * @property int $sponsor_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|EventSponsor newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EventSponsor newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EventSponsor query()
- * @method static \Illuminate\Database\Eloquent\Builder|EventSponsor whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventSponsor whereEventId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventSponsor whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventSponsor whereSponsorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventSponsor whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|EventSponsor newModelQuery()
+ * @method static Builder|EventSponsor newQuery()
+ * @method static Builder|EventSponsor query()
+ * @method static Builder|EventSponsor whereCreatedAt($value)
+ * @method static Builder|EventSponsor whereEventId($value)
+ * @method static Builder|EventSponsor whereId($value)
+ * @method static Builder|EventSponsor whereSponsorId($value)
+ * @method static Builder|EventSponsor whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class EventSponsor extends Pivot
 {

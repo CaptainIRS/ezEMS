@@ -2,6 +2,7 @@
 
 namespace App\Actions\Socialstream;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use JoelButcher\Socialstream\ConnectedAccount;
 use JoelButcher\Socialstream\Contracts\UpdatesConnectedAccounts;
@@ -13,12 +14,13 @@ class UpdateConnectedAccount implements UpdatesConnectedAccounts
      * Update a given connected account.
      *
      * @param mixed $user
-     * @param \JoelButcher\Socialstream\ConnectedAccount $connectedAccount
+     * @param ConnectedAccount $connectedAccount
      * @param string $provider
-     * @param \Laravel\Socialite\Contracts\User $providerUser
-     * @return \JoelButcher\Socialstream\ConnectedAccount
+     * @param User $providerUser
+     * @return ConnectedAccount
+     * @throws AuthorizationException
      */
-    public function update($user, ConnectedAccount $connectedAccount, string $provider, User $providerUser)
+    public function update($user, ConnectedAccount $connectedAccount, string $provider, User $providerUser): ConnectedAccount
     {
         Gate::forUser($user)->authorize('update', $connectedAccount);
 

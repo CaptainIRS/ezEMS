@@ -7,8 +7,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Throwable;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -18,9 +20,11 @@ class CreateNewUser implements CreatesNewUsers
      * Create a newly registered user.
      *
      * @param array $input
-     * @return \App\Models\User
+     * @return User
+     * @throws ValidationException
+     * @throws Throwable
      */
-    public function create(array $input)
+    public function create(array $input): User
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
@@ -43,10 +47,10 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a personal team for the user.
      *
-     * @param \App\Models\User $user
+     * @param User $user
      * @return void
      */
-    protected function createTeam(User $user)
+    protected function createTeam(User $user): void
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,

@@ -2,8 +2,16 @@
 
 namespace App\Models;
 
+use Database\Factories\EventFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Event
@@ -19,39 +27,38 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $registration_fee
  * @property string|null $contact
  * @property int $cluster_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Announcement[] $announcements
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Announcement[] $announcements
  * @property-read int|null $announcements_count
- * @property-read \App\Models\Cluster $cluster
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Faq[] $faqs
+ * @property-read Cluster $cluster
+ * @property-read Collection|Faq[] $faqs
  * @property-read int|null $faqs_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
  * @property-read int|null $payments_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sponsor[] $sponsors
+ * @property-read Collection|Sponsor[] $sponsors
  * @property-read int|null $sponsors_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Stage[] $stages
+ * @property-read Collection|Stage[] $stages
  * @property-read int|null $stages_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Team[] $teams
+ * @property-read Collection|Team[] $teams
  * @property-read int|null $teams_count
- * @method static \Database\Factories\EventFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Event newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Event newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Event query()
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereClusterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereContact($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereMaxParticipants($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event wherePrizes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereRegistrationFee($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereResources($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereRules($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Event whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @method static EventFactory factory(...$parameters)
+ * @method static Builder|Event newModelQuery()
+ * @method static Builder|Event newQuery()
+ * @method static Builder|Event query()
+ * @method static Builder|Event whereClusterId($value)
+ * @method static Builder|Event whereContact($value)
+ * @method static Builder|Event whereCreatedAt($value)
+ * @method static Builder|Event whereDescription($value)
+ * @method static Builder|Event whereId($value)
+ * @method static Builder|Event whereMaxParticipants($value)
+ * @method static Builder|Event whereName($value)
+ * @method static Builder|Event wherePrizes($value)
+ * @method static Builder|Event whereRegistrationFee($value)
+ * @method static Builder|Event whereResources($value)
+ * @method static Builder|Event whereRules($value)
+ * @method static Builder|Event whereSlug($value)
+ * @method static Builder|Event whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Event extends Model
 {
@@ -68,48 +75,50 @@ class Event extends Model
 
     /**
      * Get the announcements for the event.
+     *
+     * @returns HasMany<Announcement>
      */
-    public function announcements()
+    public function announcements(): HasMany
     {
         return $this->hasMany(Announcement::class);
     }
 
     /**
      * Get the FAQs for the event.
+     *
+     * @returns HasMany<Faq>
      */
-    public function faqs()
+    public function faqs(): HasMany
     {
         return $this->hasMany(Faq::class);
     }
 
     /**
-     * Get the payments for the event.
-     */
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
-
-    /**
      * Get the stages for the event.
+     *
+     * @returns HasMany<Stage>
      */
-    public function stages()
+    public function stages(): HasMany
     {
         return $this->hasMany(Stage::class);
     }
 
     /**
      * Get the sponsors for the event.
+     *
+     * @returns BelongsToMany<Sponsor>
      */
-    public function sponsors()
+    public function sponsors(): BelongsToMany
     {
         return $this->belongsToMany(Sponsor::class)->using(EventSponsor::class);
     }
 
     /**
      * Get the teams for the event.
+     *
+     * @returns BelongsToMany<Team>
      */
-    public function teams()
+    public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class)
             ->using(EventTeam::class)
@@ -120,8 +129,10 @@ class Event extends Model
 
     /**
      * Get the cluster this event belongs to.
+     *
+     * @returns BelongsTo<Cluster>
      */
-    public function cluster()
+    public function cluster(): BelongsTo
     {
         return $this->belongsTo(Cluster::class);
     }

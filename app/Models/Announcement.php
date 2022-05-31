@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\AnnouncementFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Announcement
@@ -12,20 +17,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property string $content
  * @property int $event_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Event $event
- * @method static \Database\Factories\AnnouncementFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement query()
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement whereEventId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Announcement whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Event $event
+ * @method static AnnouncementFactory factory(...$parameters)
+ * @method static Builder|Announcement newModelQuery()
+ * @method static Builder|Announcement newQuery()
+ * @method static Builder|Announcement query()
+ * @method static Builder|Announcement whereContent($value)
+ * @method static Builder|Announcement whereCreatedAt($value)
+ * @method static Builder|Announcement whereEventId($value)
+ * @method static Builder|Announcement whereId($value)
+ * @method static Builder|Announcement whereTitle($value)
+ * @method static Builder|Announcement whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Announcement extends Model
 {
@@ -42,8 +47,10 @@ class Announcement extends Model
 
     /**
      * Get the event that owns the announcement.
+     *
+     * @returns BelongsTo<Event>
      */
-    public function event()
+    public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
     }

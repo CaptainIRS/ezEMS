@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\ProfileFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Profile
@@ -20,29 +25,29 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $year_of_study
  * @property int $user_id
  * @property int|null $college_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\College|null $college
- * @property-read \App\Models\User $user
- * @method static \Database\Factories\ProfileFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Profile query()
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereCollegeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereContactNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereDegree($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereGender($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereNationality($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile wherePinCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile whereYearOfStudy($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read College|null $college
+ * @property-read User $user
+ * @method static ProfileFactory factory(...$parameters)
+ * @method static Builder|Profile newModelQuery()
+ * @method static Builder|Profile newQuery()
+ * @method static Builder|Profile query()
+ * @method static Builder|Profile whereAddress($value)
+ * @method static Builder|Profile whereCity($value)
+ * @method static Builder|Profile whereCollegeId($value)
+ * @method static Builder|Profile whereContactNumber($value)
+ * @method static Builder|Profile whereCreatedAt($value)
+ * @method static Builder|Profile whereDegree($value)
+ * @method static Builder|Profile whereGender($value)
+ * @method static Builder|Profile whereId($value)
+ * @method static Builder|Profile whereNationality($value)
+ * @method static Builder|Profile wherePinCode($value)
+ * @method static Builder|Profile whereState($value)
+ * @method static Builder|Profile whereUpdatedAt($value)
+ * @method static Builder|Profile whereUserId($value)
+ * @method static Builder|Profile whereYearOfStudy($value)
+ * @mixin Eloquent
  */
 class Profile extends Model
 {
@@ -69,16 +74,20 @@ class Profile extends Model
 
     /**
      * Get the user that owns the profile.
+     *
+     * @returns BelongsTo<User>
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     /**
      * Get the college this profile belongs to.
+     *
+     * @returns BelongsTo<College>
      */
-    public function college()
+    public function college(): BelongsTo
     {
         return $this->belongsTo(College::class);
     }

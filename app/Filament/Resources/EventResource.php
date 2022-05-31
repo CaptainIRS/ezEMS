@@ -92,7 +92,7 @@ class EventResource extends Resource
                                 'orderedList',
                             ])
                             ->maxLength(65535),
-                        Forms\Components\TextInput::make('registration_fee')->mask(fn (Forms\Components\TextInput\Mask $mask) => $mask->money('₹', ',', 2)),
+                        Forms\Components\TextInput::make('registration_fee')->mask(fn (Forms\Components\TextInput\Mask $mask) => $mask->money('₹')),
                         Forms\Components\RichEditor::make('contact')
                             ->disableAllToolbarButtons()
                             ->enableToolbarButtons([
