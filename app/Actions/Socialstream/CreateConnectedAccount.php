@@ -12,9 +12,9 @@ class CreateConnectedAccount implements CreatesConnectedAccounts
     /**
      * Create a connected account for a given user.
      *
-     * @param mixed $user
-     * @param string $provider
-     * @param ProviderUser $providerUser
+     * @param  mixed  $user
+     * @param  string  $provider
+     * @param  ProviderUser  $providerUser
      * @return ConnectedAccount
      */
     public function create($user, string $provider, ProviderUser $providerUser): ConnectedAccount

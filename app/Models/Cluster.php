@@ -26,6 +26,7 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  * @property-read Category $category
  * @property-read Collection|Event[] $events
  * @property-read int|null $events_count
+ *
  * @method static ClusterFactory factory(...$parameters)
  * @method static Builder|Cluster newModelQuery()
  * @method static Builder|Cluster newQuery()
@@ -50,7 +51,7 @@ class Cluster extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'description', 'category_id'
+        'name', 'slug', 'description', 'category_id',
     ];
 
     /**

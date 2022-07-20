@@ -20,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Event $event
+ *
  * @method static AnnouncementFactory factory(...$parameters)
  * @method static Builder|Announcement newModelQuery()
  * @method static Builder|Announcement newQuery()
@@ -42,7 +43,7 @@ class Announcement extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'event_id'
+        'title', 'content', 'event_id',
     ];
 
     /**

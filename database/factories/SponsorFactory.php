@@ -17,7 +17,7 @@ class SponsorFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->word . ' ' . $this->faker->word;
+        $name = $this->faker->word.' '.$this->faker->word;
         $slug = Str::slug($name);
 
         return [

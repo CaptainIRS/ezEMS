@@ -24,7 +24,7 @@ class EditTeam extends EditRecord
                     }
                 })
                 ->color('danger')
-                ->requiresConfirmation()
+                ->requiresConfirmation(),
         ];
     }
 }

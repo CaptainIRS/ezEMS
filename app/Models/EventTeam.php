@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property int $team_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static Builder|EventTeam newModelQuery()
  * @method static Builder|EventTeam newQuery()
  * @method static Builder|EventTeam query()
@@ -27,9 +28,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|EventTeam whereTeamId($value)
  * @method static Builder|EventTeam whereUpdatedAt($value)
  * @mixin Eloquent
+ *
  * @property string|null $payment_status
  * @property string|null $checkout_session
  * @property-read Stage|null $stage
+ *
  * @method static Builder|EventTeam whereCheckoutSession($value)
  * @method static Builder|EventTeam wherePaymentStatus($value)
  */

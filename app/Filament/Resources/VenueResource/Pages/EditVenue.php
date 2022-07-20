@@ -24,7 +24,7 @@ class EditVenue extends EditRecord
                     }
                 })
                 ->color('danger')
-                ->requiresConfirmation()
+                ->requiresConfirmation(),
         ];
     }
 }

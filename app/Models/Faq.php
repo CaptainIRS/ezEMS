@@ -20,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Event $event
+ *
  * @method static FaqFactory factory(...$parameters)
  * @method static Builder|Faq newModelQuery()
  * @method static Builder|Faq newQuery()
@@ -42,7 +43,7 @@ class Faq extends Model
      * @var array
      */
     protected $fillable = [
-        'question', 'answer', 'event_id'
+        'question', 'answer', 'event_id',
     ];
 
     /**

@@ -20,11 +20,12 @@ class InviteTeamMember implements InvitesTeamMembers
     /**
      * Invite a new team member to the given team.
      *
-     * @param mixed $user
-     * @param mixed $team
-     * @param string $email
-     * @param string|null $role
+     * @param  mixed  $user
+     * @param  mixed  $team
+     * @param  string  $email
+     * @param  string|null  $role
      * @return void
+     *
      * @throws AuthorizationException
      * @throws ValidationException
      */
@@ -47,10 +48,11 @@ class InviteTeamMember implements InvitesTeamMembers
     /**
      * Validate the invite member operation.
      *
-     * @param mixed $team
-     * @param string $email
-     * @param string|null $role
+     * @param  mixed  $team
+     * @param  string  $email
+     * @param  string|null  $role
      * @return void
+     *
      * @throws ValidationException
      */
     protected function validate(mixed $team, string $email, ?string $role): void
@@ -68,7 +70,7 @@ class InviteTeamMember implements InvitesTeamMembers
     /**
      * Get the validation rules for inviting a team member.
      *
-     * @param mixed $team
+     * @param  mixed  $team
      * @return array
      */
     protected function rules(mixed $team): array
@@ -86,8 +88,8 @@ class InviteTeamMember implements InvitesTeamMembers
     /**
      * Ensure that the user is not already on the team.
      *
-     * @param mixed $team
-     * @param string $email
+     * @param  mixed  $team
+     * @param  string  $email
      * @return Closure
      */
     protected function ensureUserIsNotAlreadyOnTeam(mixed $team, string $email): Closure

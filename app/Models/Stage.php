@@ -30,6 +30,7 @@ use Illuminate\Support\Carbon;
  * @property-read Collection|EventTeam[] $eventTeams
  * @property-read int|null $event_teams_count
  * @property-read Venue $venue
+ *
  * @method static StageFactory factory(...$parameters)
  * @method static Builder|Stage newModelQuery()
  * @method static Builder|Stage newQuery()
@@ -57,7 +58,7 @@ class Stage extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'description', 'start_time', 'end_time', 'location_in_venue', 'event_id', 'venue_id'
+        'name', 'slug', 'description', 'start_time', 'end_time', 'location_in_venue', 'event_id', 'venue_id',
     ];
 
     /**

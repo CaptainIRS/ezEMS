@@ -20,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Edition $edition
+ *
  * @method static NewsFactory factory(...$parameters)
  * @method static Builder|News newModelQuery()
  * @method static Builder|News newQuery()
@@ -42,7 +43,7 @@ class News extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'edition_id'
+        'title', 'content', 'edition_id',
     ];
 
     /**

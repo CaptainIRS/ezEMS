@@ -37,7 +37,7 @@ class TestSeeder extends Seeder
         });
 
         User::factory([
-            'email' => 'admin@admin.com'
+            'email' => 'admin@admin.com',
         ])->withPersonalTeam()->has(Profile::factory())->create();
 
         Profile::each(function ($profile) {
@@ -58,7 +58,6 @@ class TestSeeder extends Seeder
                 Event::all()->random(2)
             );
         });
-
 
         Edition::each(function ($edition) {
             News::factory()->count(5)->for($edition)->create();

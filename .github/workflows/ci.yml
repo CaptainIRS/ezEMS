@@ -33,7 +33,7 @@ jobs:
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Run lint
-        run: ./vendor/bin/php-cs-fixer fix --dry-run
+        run: ./vendor/bin/pint --test
 
   tests:
     name: Run feature tests and upload coverage

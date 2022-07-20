@@ -51,7 +51,7 @@ class UserResource extends Resource
                             ->maxValue(5),
                         Forms\Components\BelongsToSelect::make('college_id')
                             ->relationship('college', 'name'),
-                    ])
+                    ]),
             ]);
     }
 

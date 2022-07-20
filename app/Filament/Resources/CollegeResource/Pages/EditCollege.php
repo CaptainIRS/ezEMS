@@ -24,7 +24,7 @@ class EditCollege extends EditRecord
                     }
                 })
                 ->color('danger')
-                ->requiresConfirmation()
+                ->requiresConfirmation(),
         ];
     }
 }

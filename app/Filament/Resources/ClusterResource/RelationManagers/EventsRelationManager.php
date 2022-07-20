@@ -58,7 +58,7 @@ class EventsRelationManager extends HasManyRelationManager
             ->actions([
                 Tables\Actions\Action::make('edit')
                     ->url(fn (Event $record): string => EventResource::getUrl('edit', $record))
-                    ->icon('heroicon-s-pencil')
+                    ->icon('heroicon-s-pencil'),
             ]);
     }
 }

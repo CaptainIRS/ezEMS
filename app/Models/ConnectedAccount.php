@@ -31,6 +31,7 @@ use JoelButcher\Socialstream\Events\ConnectedAccountUpdated;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
+ *
  * @method static Builder|ConnectedAccount newModelQuery()
  * @method static Builder|ConnectedAccount newQuery()
  * @method static Builder|ConnectedAccount query()

@@ -19,8 +19,9 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a newly registered user.
      *
-     * @param array $input
+     * @param  array  $input
      * @return User
+     *
      * @throws ValidationException
      * @throws Throwable
      */
@@ -47,14 +48,14 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a personal team for the user.
      *
-     * @param User $user
+     * @param  User  $user
      * @return void
      */
     protected function createTeam(User $user): void
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0] . "'s Team",
+            'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,
         ]));
     }

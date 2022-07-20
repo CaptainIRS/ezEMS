@@ -25,7 +25,7 @@ class CreateUserFromProvider implements CreatesUserFromProvider
     /**
      * Create a new action instance.
      *
-     * @param CreatesConnectedAccounts $createsConnectedAccounts
+     * @param  CreatesConnectedAccounts  $createsConnectedAccounts
      */
     public function __construct(CreatesConnectedAccounts $createsConnectedAccounts)
     {
@@ -35,9 +35,10 @@ class CreateUserFromProvider implements CreatesUserFromProvider
     /**
      * Create a new user from a social provider user.
      *
-     * @param string $provider
-     * @param ProviderUserContract $providerUser
+     * @param  string  $provider
+     * @param  ProviderUserContract  $providerUser
      * @return User
+     *
      * @throws Throwable
      */
     public function create(string $provider, ProviderUserContract $providerUser): User
@@ -67,14 +68,14 @@ class CreateUserFromProvider implements CreatesUserFromProvider
     /**
      * Create a personal team for the user.
      *
-     * @param User $user
+     * @param  User  $user
      * @return void
      */
     protected function createTeam(User $user): void
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0] . "'s Team",
+            'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,
         ]));
     }

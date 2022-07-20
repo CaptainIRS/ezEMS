@@ -13,10 +13,11 @@ class RemoveTeamMember implements RemovesTeamMembers
     /**
      * Remove the team member from the given team.
      *
-     * @param mixed $user
-     * @param mixed $team
-     * @param mixed $teamMember
+     * @param  mixed  $user
+     * @param  mixed  $team
+     * @param  mixed  $teamMember
      * @return void
+     *
      * @throws AuthorizationException
      * @throws ValidationException
      */
@@ -34,15 +35,16 @@ class RemoveTeamMember implements RemovesTeamMembers
     /**
      * Authorize that the user can remove the team member.
      *
-     * @param mixed $user
-     * @param mixed $team
-     * @param mixed $teamMember
+     * @param  mixed  $user
+     * @param  mixed  $team
+     * @param  mixed  $teamMember
      * @return void
+     *
      * @throws AuthorizationException
      */
     protected function authorize(mixed $user, mixed $team, mixed $teamMember): void
     {
-        if (!Gate::forUser($user)->check('removeTeamMember', $team) &&
+        if (! Gate::forUser($user)->check('removeTeamMember', $team) &&
             $user->id !== $teamMember->id) {
             throw new AuthorizationException();
         }
@@ -51,9 +53,10 @@ class RemoveTeamMember implements RemovesTeamMembers
     /**
      * Ensure that the currently authenticated user does not own the team.
      *
-     * @param mixed $teamMember
-     * @param mixed $team
+     * @param  mixed  $teamMember
+     * @param  mixed  $team
      * @return void
+     *
      * @throws ValidationException
      */
     protected function ensureUserDoesNotOwnTeam(mixed $teamMember, mixed $team): void

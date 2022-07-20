@@ -23,6 +23,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read Collection|Stage[] $stages
  * @property-read int|null $stages_count
+ *
  * @method static VenueFactory factory(...$parameters)
  * @method static Builder|Venue newModelQuery()
  * @method static Builder|Venue newQuery()
@@ -46,7 +47,7 @@ class Venue extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'location', 'capacity'
+        'name', 'description', 'location', 'capacity',
     ];
 
     /**

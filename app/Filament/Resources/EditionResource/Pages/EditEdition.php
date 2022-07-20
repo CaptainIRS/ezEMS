@@ -24,7 +24,7 @@ class EditEdition extends EditRecord
                     }
                 })
                 ->color('danger')
-                ->requiresConfirmation()
+                ->requiresConfirmation(),
         ];
     }
 }

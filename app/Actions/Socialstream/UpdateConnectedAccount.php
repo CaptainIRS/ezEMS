@@ -13,11 +13,12 @@ class UpdateConnectedAccount implements UpdatesConnectedAccounts
     /**
      * Update a given connected account.
      *
-     * @param mixed $user
-     * @param ConnectedAccount $connectedAccount
-     * @param string $provider
-     * @param User $providerUser
+     * @param  mixed  $user
+     * @param  ConnectedAccount  $connectedAccount
+     * @param  string  $provider
+     * @param  User  $providerUser
      * @return ConnectedAccount
+     *
      * @throws AuthorizationException
      */
     public function update($user, ConnectedAccount $connectedAccount, string $provider, User $providerUser): ConnectedAccount

@@ -12,7 +12,7 @@ class ResolveSocialiteUser implements ResolvesSocialiteUsers
     /**
      * Resolve the user for a given provider.
      *
-     * @param string $provider
+     * @param  string  $provider
      * @return User
      */
     public function resolve($provider): User
@@ -20,7 +20,7 @@ class ResolveSocialiteUser implements ResolvesSocialiteUsers
         $user = Socialite::driver($provider)->user();
 
         if (Socialstream::generatesMissingEmails()) {
-            $user->email = $user->getEmail() ?? ("$user->id@$provider" . config('app.domain'));
+            $user->email = $user->getEmail() ?? ("$user->id@$provider".config('app.domain'));
         }
 
         return $user;

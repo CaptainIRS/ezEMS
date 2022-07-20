@@ -17,7 +17,7 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
     }
 
     $authMiddleware = config('jetstream.guard')
-        ? 'auth:' . config('jetstream.guard')
+        ? 'auth:'.config('jetstream.guard')
         : 'auth';
 
     $authSessionMiddleware = config('jetstream.auth_session', false)

@@ -28,6 +28,7 @@ use Laravel\Jetstream\Team as JetstreamTeam;
  * @property-read int|null $team_invitations_count
  * @property-read Collection|User[] $users
  * @property-read int|null $users_count
+ *
  * @method static TeamFactory factory(...$parameters)
  * @method static Builder|Team newModelQuery()
  * @method static Builder|Team newQuery()
@@ -39,6 +40,7 @@ use Laravel\Jetstream\Team as JetstreamTeam;
  * @method static Builder|Team whereUpdatedAt($value)
  * @method static Builder|Team whereUserId($value)
  * @mixin Eloquent
+ *
  * @property-read Collection|Event[] $events
  * @property-read int|null $events_count
  * @property-read int|null $payments_count

@@ -20,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read Collection|Profile[] $profiles
  * @property-read int|null $profiles_count
+ *
  * @method static CollegeFactory factory(...$parameters)
  * @method static Builder|College newModelQuery()
  * @method static Builder|College newQuery()
@@ -40,7 +41,7 @@ class College extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     /**

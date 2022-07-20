@@ -56,6 +56,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @property-read int|null $teams_count
  * @property-read Collection|PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
+ *
  * @method static UserFactory factory(...$parameters)
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
@@ -79,6 +80,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
+ *
  * @property-read Profile|null $profile
  */
 class User extends Authenticatable implements MustVerifyEmail

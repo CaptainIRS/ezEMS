@@ -27,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $news_count
  * @property-read Collection|Sponsor[] $sponsors
  * @property-read int|null $sponsors_count
+ *
  * @method static EditionFactory factory(...$parameters)
  * @method static Builder|Edition newModelQuery()
  * @method static Builder|Edition newQuery()
@@ -49,7 +50,7 @@ class Edition extends Model
      * @var array
      */
     protected $fillable = [
-        'year', 'start_time', 'end_time'
+        'year', 'start_time', 'end_time',
     ];
 
     /**

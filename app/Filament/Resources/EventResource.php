@@ -30,7 +30,7 @@ class EventResource extends Resource
                     ->schema([
                         Forms\Components\BelongsToSelect::make('cluster_id')
                             ->relationship('cluster', 'name')
-                            ->getOptionLabelFromRecordUsing(fn (Cluster $record) => $record->category()->get()->first()->edition()->get()->first()->year . ' → ' . $record->category()->get()->first()->name . ' → ' . $record->name)
+                            ->getOptionLabelFromRecordUsing(fn (Cluster $record) => $record->category()->get()->first()->edition()->get()->first()->year.' → '.$record->category()->get()->first()->name.' → '.$record->name)
                             ->required(),
                         Forms\Components\TextInput::make('name')
                             ->required()
@@ -131,7 +131,7 @@ class EventResource extends Resource
             RelationManagers\FaqsRelationManager::class,
             RelationManagers\SponsorsRelationManager::class,
             RelationManagers\StagesRelationManager::class,
-            RelationManagers\TeamsRelationManager::class
+            RelationManagers\TeamsRelationManager::class,
         ];
     }
 

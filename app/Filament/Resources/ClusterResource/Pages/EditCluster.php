@@ -24,7 +24,7 @@ class EditCluster extends EditRecord
                     }
                 })
                 ->color('danger')
-                ->requiresConfirmation()
+                ->requiresConfirmation(),
         ];
     }
 }

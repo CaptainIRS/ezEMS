@@ -35,7 +35,7 @@ class EditionResource extends Resource
                         Forms\Components\DateTimePicker::make('end_time')
                             ->displayFormat('d M Y H:i')
                             ->required(),
-                    ])
+                    ]),
             ])->columns(2);
     }
 

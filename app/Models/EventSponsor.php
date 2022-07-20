@@ -15,6 +15,7 @@ use Illuminate\Support\Carbon;
  * @property int $sponsor_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static Builder|EventSponsor newModelQuery()
  * @method static Builder|EventSponsor newQuery()
  * @method static Builder|EventSponsor query()

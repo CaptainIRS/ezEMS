@@ -19,6 +19,7 @@ use Laravel\Jetstream\TeamInvitation as JetstreamTeamInvitation;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Team $team
+ *
  * @method static Builder|TeamInvitation newModelQuery()
  * @method static Builder|TeamInvitation newQuery()
  * @method static Builder|TeamInvitation query()

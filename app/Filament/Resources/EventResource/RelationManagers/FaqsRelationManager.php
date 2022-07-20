@@ -32,7 +32,7 @@ class FaqsRelationManager extends HasManyRelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('question')->limit('50')->wrap(),
-                Tables\Columns\TextColumn::make('answer')->limit('50')->wrap()
+                Tables\Columns\TextColumn::make('answer')->limit('50')->wrap(),
             ])
             ->filters([
                 //

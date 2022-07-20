@@ -25,6 +25,7 @@ use Illuminate\Support\Carbon;
  * @property-read Collection|Cluster[] $clusters
  * @property-read int|null $clusters_count
  * @property-read Edition $edition
+ *
  * @method static CategoryFactory factory(...$parameters)
  * @method static Builder|Category newModelQuery()
  * @method static Builder|Category newQuery()
@@ -48,7 +49,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'description', 'edition_id'
+        'name', 'slug', 'description', 'edition_id',
     ];
 
     /**

@@ -29,6 +29,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read College|null $college
  * @property-read User $user
+ *
  * @method static ProfileFactory factory(...$parameters)
  * @method static Builder|Profile newModelQuery()
  * @method static Builder|Profile newQuery()
@@ -69,7 +70,7 @@ class Profile extends Model
         'degree',
         'year_of_study',
         'user_id',
-        'college_id'
+        'college_id',
     ];
 
     /**

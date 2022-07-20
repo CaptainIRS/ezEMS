@@ -48,7 +48,7 @@ class ClustersRelationManager extends HasManyRelationManager
             ->actions([
                 Tables\Actions\Action::make('edit')
                     ->url(fn (Cluster $record): string => ClusterResource::getUrl('edit', $record))
-                    ->icon('heroicon-s-pencil')
+                    ->icon('heroicon-s-pencil'),
             ]);
     }
 }

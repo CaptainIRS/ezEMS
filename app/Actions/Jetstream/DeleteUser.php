@@ -19,7 +19,7 @@ class DeleteUser implements DeletesUsers
     /**
      * Create a new action instance.
      *
-     * @param DeletesTeams $deletesTeams
+     * @param  DeletesTeams  $deletesTeams
      * @return void
      */
     public function __construct(DeletesTeams $deletesTeams)
@@ -30,8 +30,9 @@ class DeleteUser implements DeletesUsers
     /**
      * Delete the given user.
      *
-     * @param mixed $user
+     * @param  mixed  $user
      * @return void
+     *
      * @throws Throwable
      */
     public function delete($user): void
@@ -48,7 +49,7 @@ class DeleteUser implements DeletesUsers
     /**
      * Delete the teams and team associations attached to the user.
      *
-     * @param mixed $user
+     * @param  mixed  $user
      * @return void
      */
     protected function deleteTeams(mixed $user): void

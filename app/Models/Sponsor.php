@@ -27,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @property-read Edition $edition
  * @property-read Collection|Event[] $events
  * @property-read int|null $events_count
+ *
  * @method static SponsorFactory factory(...$parameters)
  * @method static Builder|Sponsor newModelQuery()
  * @method static Builder|Sponsor newQuery()
@@ -52,7 +53,7 @@ class Sponsor extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'tagline', 'url', 'type', 'edition_id'
+        'name', 'slug', 'tagline', 'url', 'type', 'edition_id',
     ];
 
     /**

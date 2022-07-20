@@ -42,7 +42,7 @@ class UsersRelationManager extends BelongsToManyRelationManager
                             ->numeric()
                             ->minValue(1)
                             ->maxValue(5),
-                    ])
+                    ]),
             ]);
     }
 
