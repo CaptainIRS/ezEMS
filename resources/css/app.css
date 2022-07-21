@@ -5,3 +5,43 @@
 .mt-auto {
     margin-top: unset !important;
 }
+
+.app {
+    @apply font-sans antialiased;
+
+    .body {
+        @apply min-h-screen bg-gray-100;
+    }
+}
+
+.dropdown {
+    @apply w-60;
+}
+
+.nav {
+    @apply bg-white border-b border-gray-100;
+
+    .primary {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-16;
+
+        .links {
+            @apply flex;
+
+            .logo {
+                @apply shrink-0 flex items-center;
+
+                .application-mark {
+                    @apply block h-9 w-auto;
+                }
+            }
+
+            .nav-links {
+                @apply hidden space-x-8 sm:-my-px sm:ml-10 sm:flex;
+            }
+        }
+
+        .dropdowns {
+            @apply hidden sm:flex sm:items-center sm:ml-6 ml-3 relative;
+        }
+    }
+}
