@@ -15,6 +15,7 @@
         "laravel/framework": "^9.19.0",
         "laravel/passport": "^10.4",
         "laravel/sanctum": "^2.14.1",
+        "laravel/telescope": "^4.9",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
         "spatie/laravel-settings": "^2.4",
@@ -52,7 +53,8 @@
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-	        "@php artisan filament:upgrade"
+	        "@php artisan filament:upgrade",
+            "@php artisan telescope:publish --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
