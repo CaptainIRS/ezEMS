@@ -1,13 +1,13 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 .mt-auto {
     margin-top: unset !important;
 }
 
 .app {
-    @apply font-sans antialiased;
+    @apply font-sans antialiased bg-white;
 
     .body {
         @apply min-h-screen bg-gray-100;
@@ -16,6 +16,34 @@
 
 .dropdown {
     @apply w-60;
+}
+
+.card-container {
+    @apply flex gap-4 flex-wrap max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8;
+
+    .card {
+        @apply bg-slate-100 rounded-lg shadow p-8 max-w-sm hover:bg-slate-200;
+
+        .card-header {
+            @apply space-y-4 font-bold;
+        }
+    }
+}
+
+.tab-container {
+    @apply block max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8;
+
+    .tab-header-container {
+        @apply flex flex-row justify-between flex-wrap gap-2;
+
+        .tab-header {
+            @apply px-4 border-b-2 border-gray-900 hover:border-teal-300;
+
+            &.active {
+                @apply bg-teal-100;
+            }
+        }
+    }
 }
 
 .nav {

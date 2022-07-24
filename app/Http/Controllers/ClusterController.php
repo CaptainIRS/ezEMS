@@ -10,6 +10,8 @@ class ClusterController extends Controller
 {
     public function show(Edition $edition, Category $category, Cluster $cluster)
     {
-        return view('cluster.show', compact('cluster'));
+        $events = $cluster->events;
+
+        return view('cluster.show', compact('edition', 'category', 'cluster', 'events'));
     }
 }

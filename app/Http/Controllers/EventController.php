@@ -11,6 +11,6 @@ class EventController extends Controller
 {
     public function show(Edition $edition, Category $category, Cluster $cluster, Event $event)
     {
-        return view('event.show', compact('event'));
+        return view('event.show', compact('edition', 'category', 'cluster', 'event'));
     }
 }

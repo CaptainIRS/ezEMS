@@ -1,19 +1,30 @@
+@props(['edition'])
+
 <nav x-data="{ open: false }" class="nav">
     <!-- Primary Navigation Menu -->
     <div class="primary">
         <div class="links">
             <!-- Logo -->
             <div class="logo">
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('home') }}">
                     <x-application-mark class="application-mark" />
                 </a>
             </div>
 
             <!-- Navigation Links -->
             <div class="nav-links">
-                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                    {{ __('Home') }}
                 </x-nav-link>
+
+                @if (isset($edition))
+                @foreach ($edition->categories as $category)
+                <x-nav-link
+                    href="{{ route('category.show', ['edition' => $edition->year, 'category' => $category->slug]) }}">
+                    {{ $category->name }}
+                </x-nav-link>
+                @endforeach
+                @endif
             </div>
         </div>
 
@@ -21,14 +32,25 @@
             <!-- Settings Dropdown -->
             <x-dropdown>
                 <x-slot name="trigger">
+                    @auth
                     <button
                         class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                         <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
                             alt="{{ Auth::user()->name }}" />
                     </button>
+                    @endauth
+
+                    @guest
+                    <button
+                        class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                        <img class="h-8 w-8 rounded-full object-cover"
+                            src="https://ui-avatars.com/api/?name=Guest&color=FFFFFF&background=111827" alt="Guest" />
+                    </button>
+                    @endguest
                 </x-slot>
 
                 <x-slot name="content">
+                    @auth
                     <!-- Account Management -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
                         {{ __('Manage Account') }}
@@ -86,6 +108,15 @@
                             {{ __('Log Out') }}
                         </x-dropdown-link>
                     </form>
+
+                    @endauth
+
+                    @guest
+                    <!-- Authentication -->
+                    <x-dropdown-link href="{{ route('login') }}">
+                        {{ __('Log In') }}
+                    </x-dropdown-link>
+                    @endguest
                 </x-slot>
             </x-dropdown>
         </div>
@@ -106,9 +137,20 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
+        <x-responsive-nav-link href="{{ route('home') }}">
+            {{ __('Home') }}
         </x-responsive-nav-link>
+
+        @if (isset($edition))
+        @foreach ($edition->categories as $category)
+        <x-responsive-nav-link
+            href="{{ route('category.show', ['edition' => $edition->year, 'category' => $category->slug]) }}">
+            {{ $category->name }}
+        </x-responsive-nav-link>
+        @endforeach
+        @endif
+
+        @auth
         <!-- Account Management -->
         <div class="border-t border-gray-200"></div>
 
@@ -167,5 +209,15 @@
                 {{ __('Log Out') }}
             </x-responsive-nav-link>
         </form>
+
+        @endauth
+
+        @guest
+        <!-- Authentication -->
+        <div class="border-t border-gray-200"></div>
+        <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+            {{ __('Log In') }}
+        </x-responsive-nav-link>
+        @endguest
     </div>
 </nav>

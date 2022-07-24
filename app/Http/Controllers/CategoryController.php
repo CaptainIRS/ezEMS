@@ -9,6 +9,8 @@ class CategoryController extends Controller
 {
     public function show(Edition $edition, Category $category)
     {
-        return view('category.show', compact('category'));
+        $clusters = $category->clusters;
+
+        return view('category.show', compact('edition', 'category', 'clusters'));
     }
 }

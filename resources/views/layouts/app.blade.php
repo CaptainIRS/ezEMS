@@ -1,3 +1,5 @@
+@props(['edition'])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -18,7 +20,7 @@
         <x-banner />
 
         <div class="body">
-            @livewire('navigation-menu')
+            @include('navigation-menu', ['edition' => isset($edition) ? $edition : null])
 
             <!-- Page Heading -->
             @if (isset($header))

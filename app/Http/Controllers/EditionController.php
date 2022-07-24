@@ -8,6 +8,8 @@ class EditionController extends Controller
 {
     public function show(Edition $edition)
     {
-        return view('dashboard', compact('edition'));
+        $categories = $edition->categories;
+
+        return view('edition.show', compact('edition', 'categories'));
     }
 }
