@@ -34,15 +34,27 @@
     @apply block max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8;
 
     .tab-header-container {
-        @apply flex flex-row justify-between flex-wrap gap-2;
+        @apply flex flex-row justify-around flex-wrap gap-2;
 
         .tab-header {
-            @apply px-4 border-b-2 border-gray-900 hover:border-teal-300;
+            @apply px-4 min-w-min border-b-2 border-gray-900 hover:border-teal-300;
 
             &.active {
                 @apply bg-teal-100;
             }
         }
+    }
+}
+
+.event-page {
+    @apply lg:flex lg:flex-row;
+
+    .event-image {
+        @apply lg:w-2/5;
+    }
+
+    .tab-container {
+        @apply lg:w-3/5;
     }
 }
 
