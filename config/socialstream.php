@@ -29,9 +29,7 @@ return [
     |
     */
 
-    'providers' => [
-        Providers::github(),
-    ],
+    'providers' => explode(",", env('OAUTH_PROVIDERS', '')),
 
     /*
     |--------------------------------------------------------------------------
