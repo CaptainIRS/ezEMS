@@ -8,37 +8,38 @@
     </x-slot>
 
     <x-slot name="form">
-        <!-- Team Owner Information -->
-        <div class="col-span-6">
-            <x-label value="{{ __('Team Owner') }}" />
 
-            <div class="flex items-center mt-2">
-                <img class="w-12 h-12 rounded-full object-cover" src="{{ $team->owner->profile_photo_url }}" alt="{{ $team->owner->name }}">
+        <div class="team-owner-container">
+            <!-- Team Owner Information -->
+            <div class="team-owner-info">
+                <x-label value="{{ __('Team Owner') }}" />
 
-                <div class="ml-4 leading-tight">
-                    <div>{{ $team->owner->name }}</div>
-                    <div class="text-gray-700 text-sm">{{ $team->owner->email }}</div>
+                <div class="team-owner-info-container">
+                    <img class="team-owner-image" src="{{ $team->owner->profile_photo_url }}"
+                        alt="{{ $team->owner->name }}">
+
+                    <div class="team-owner-name">
+                        <div>{{ $team->owner->name }}</div>
+                        <div class="team-owner-email">{{ $team->owner->email }}</div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Team Name -->
-        <div class="col-span-6 sm:col-span-4">
+        <div class="team-input-group">
             <x-label for="name" value="{{ __('Team Name') }}" />
 
-            <x-input id="name"
-                        type="text"
-                        class="mt-1 block w-full"
-                        wire:model.defer="state.name"
-                        :disabled="! Gate::check('update', $team)" />
+            <x-input id="name" type="text" class="team-text-input" wire:model.defer="state.name"
+                :disabled="!Gate::check('update', $team)" />
 
-            <x-input-error for="name" class="mt-2" />
+            <x-input-error for="name" class="team-text-input-error" />
         </div>
     </x-slot>
 
     @if (Gate::check('update', $team))
         <x-slot name="actions">
-            <x-action-message class="mr-3" on="saved">
+            <x-action-message on="saved">
                 {{ __('Saved.') }}
             </x-action-message>
 

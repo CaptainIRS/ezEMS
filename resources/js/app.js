@@ -1,9 +1,7 @@
-import './bootstrap';
-
 import Alpine from 'alpinejs';
+
+import 'ezems-skin-default';
 
 window.Alpine = Alpine;
 
 Alpine.start();
-
-// import 'dc-main/dc-main.js';

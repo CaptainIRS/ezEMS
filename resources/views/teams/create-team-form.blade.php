@@ -8,23 +8,25 @@
     </x-slot>
 
     <x-slot name="form">
-        <div class="col-span-6">
-            <x-label value="{{ __('Team Owner') }}" />
 
-            <div class="flex items-center mt-2">
-                <img class="w-12 h-12 rounded-full object-cover" src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}">
+        <div class="team-owner-container">
+            <div class="team-owner-info">
+                <x-label value="{{ __('Team Owner') }}" />
+                <div class="team-owner-info-container">
+                    <img class="team-owner-image" src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}">
 
-                <div class="ml-4 leading-tight">
-                    <div>{{ $this->user->name }}</div>
-                    <div class="text-gray-700 text-sm">{{ $this->user->email }}</div>
+                    <div class="team-owner-name">
+                        <div>{{ $this->user->name }}</div>
+                        <div class="team-owner-email">{{ $this->user->email }}</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-span-6 sm:col-span-4">
+        <div class="team-input-group">
             <x-label for="name" value="{{ __('Team Name') }}" />
-            <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autofocus />
-            <x-input-error for="name" class="mt-2" />
+            <x-input id="name" type="text" class="team-text-input" wire:model.defer="state.name" autofocus />
+            <x-input-error for="name" class="team-text-input-error" />
         </div>
     </x-slot>
 

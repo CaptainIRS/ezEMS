@@ -31,13 +31,18 @@
                 <p>
                 <ul>
                     @foreach ($event->stages as $stage)
-                    <li>
-                        <div class="text-2xl"> {{ $stage->name }} </div>
-                        <div class="text-sm"> {{ date("F j, Y, g:i a T", strtotime($stage->start_time)) }} - {{ date("F
-                            j, Y, g:i a T", strtotime($stage->end_time)) }} </div>
-                        <div class="text-lg"> {{ $stage->description }} </div>
-                    </li>
-                    <br>
+                        <li>
+                            <div class="text-2xl"> {{ $stage->name }} </div>
+                            <div class="text-sm"> {{ date('F j, Y, g:i a T', strtotime($stage->start_time)) }} -
+                                {{ date(
+                                    "F
+                                                                                                                                                                                                                                                                                            j, Y, g:i a T",
+                                    strtotime($stage->end_time),
+                                ) }}
+                            </div>
+                            <div class="text-lg"> {{ $stage->description }} </div>
+                        </li>
+                        <br>
                     @endforeach
                 </ul>
                 </p>
@@ -51,12 +56,12 @@
                 <p>
                 <ul>
                     @foreach ($event->faqs as $faq)
-                    <li>
-                        <div class="text-2xl"> Q: {{ $faq->question }} </div>
-                        <div class="text-sm"> A: {{ $faq->answer }} </div>
+                        <li>
+                            <div class="text-2xl"> Q: {{ $faq->question }} </div>
+                            <div class="text-sm"> A: {{ $faq->answer }} </div>
+                            <br>
+                        </li>
                         <br>
-                    </li>
-                    <br>
                     @endforeach
                 </ul>
                 </p>

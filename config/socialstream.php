@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'providers' => explode(",", env('OAUTH_PROVIDERS', '')),
+    'providers' => explode(',', env('OAUTH_PROVIDERS', '')),
 
     /*
     |--------------------------------------------------------------------------

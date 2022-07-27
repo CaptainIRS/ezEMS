@@ -8,18 +8,18 @@
     <!-- Clusters -->
     <div class="card-container">
         @foreach ($clusters as $cluster)
-        <div class="card">
-            <a
-                href="{{ route('cluster.show', ['edition' => $edition->year, 'category' => $category->slug, 'cluster' => $cluster->slug]) }}">
-                <div class="card-header">
-                    {{ $cluster->name }}
-                </div>
-                <div class="card-body">
-                    {{ $cluster->description }}
-                </div>
-            </a>
-        </div>
-        <br>
+            <div class="card">
+                <a
+                    href="{{ route('cluster.show', ['edition' => $edition->year, 'category' => $category->slug, 'cluster' => $cluster->slug]) }}">
+                    <div class="card-header">
+                        {{ $cluster->name }}
+                    </div>
+                    <div class="card-body">
+                        {{ $cluster->description }}
+                    </div>
+                </a>
+            </div>
+            <br>
         @endforeach
     </div>
 </x-app-layout>
