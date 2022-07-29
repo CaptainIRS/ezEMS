@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <div class="mt-4 flex items-center justify-between">
+        <div class="auth-action-button-container">
             <form method="POST" action="{{ route('verification.send') }}">
                 @csrf
 
@@ -26,13 +26,13 @@
             </form>
 
             <div>
-                <a href="{{ route('profile.show') }}" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <a href="{{ route('profile.show') }}" class="auth-link">
                     {{ __('Edit Profile') }}</a>
 
-                <form method="POST" action="{{ route('logout') }}" class="inline">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 ml-2">
+                    <button type="submit" class="auth-link">
                         {{ __('Log Out') }}
                     </button>
                 </form>

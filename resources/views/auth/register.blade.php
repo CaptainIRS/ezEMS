@@ -53,7 +53,7 @@
             @endif
 
             <div class="auth-action-button-container">
-                <a class="login-redirect-link" href="{{ route('login') }}">
+                <a class="auth-link" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 

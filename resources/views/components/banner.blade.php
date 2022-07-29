@@ -17,7 +17,7 @@
             <p class="banner-message-text" x-text="message"></p>
         </div>
         <button type="button" class="banner-button" aria-label="Dismiss" x-on:click="show = false">
-            <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            <svg class="banner-dismiss-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>

@@ -1,6 +1,6 @@
 @props(['team', 'component' => 'dropdown-link'])
 
-<form class="switchable-team" method="POST" action="{{ route('current-team.update') }}" x-data>
+<form method="POST" action="{{ route('current-team.update') }}" x-data>
     @method('PUT')
     @csrf
 
@@ -8,7 +8,7 @@
     <input type="hidden" name="team_id" value="{{ $team->id }}">
 
     <x-dynamic-component :component="$component" href="#" x-on:click.prevent="$root.submit();">
-        <div class="flex items-center">
+        <div class="switchable-team-container">
             @if (Auth::user()->isCurrentTeam($team))
                 <svg class="switchable-team-check-mark" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,7 +16,7 @@
                 </svg>
             @endif
 
-            <div class="truncate">{{ $team->name }}</div>
+            <div class="switchable-team-name">{{ $team->name }}</div>
         </div>
     </x-dynamic-component>
 </form>

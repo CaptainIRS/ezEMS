@@ -1,6 +1,6 @@
 <x-app-layout :edition="$edition">
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="cluster-page-header-text">
             {{ $category->name }} - {{ $cluster->name }}
         </h2>
     </x-slot>

@@ -36,7 +36,7 @@
 
             <div class="auth-action-button-container">
                 @if (Route::has('password.request'))
-                    <a class="forgot-password-link" href="{{ route('password.request') }}">
+                    <a class="auth-link" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif

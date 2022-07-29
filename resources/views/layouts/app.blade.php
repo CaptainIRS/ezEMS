@@ -16,10 +16,10 @@
         @vite(['resources/js/app.js'])
     @else
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.3/dist/cdn.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ezems-skin-default@latest/dist/app.css">
+        <link rel="stylesheet" href="{{ config('app.skin') }}">
     @endif
 
-    @livewireStyles
+    {{-- @livewireStyles --}}
 </head>
 
 <body class="app">
@@ -30,8 +30,10 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="header">
-                {{ $header }}
+            <header class="header-container">
+                <div class="header">
+                    {{ $header }}
+                </div>
             </header>
         @endif
 

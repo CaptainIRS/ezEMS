@@ -39,7 +39,7 @@
                                     <button type="button"
                                         class="team-role-item {{ $index > 0 ? 'team-role-item-not-first' : '' }} {{ !$loop->last ? 'team-role-item-not-last' : '' }} {{ isset($addTeamMemberForm['role']) && $addTeamMemberForm['role'] !== $role->key ? 'team-role-item-inactive' : '' }}"
                                         wire:click="$set('addTeamMemberForm.role', '{{ $role->key }}')">
-                                        <div class="">
+                                        <div>
                                             <!-- Role Name -->
                                             <div class="role-name-container">
                                                 <div
@@ -191,7 +191,7 @@
                     <button type="button"
                         class="team-role-item {{ $index > 0 ? 'team-role-item-not-first' : '' }} {{ !$loop->last ? 'team-role-item-not-last' : '' }} {{ $currentRole !== $role->key ? 'team-role-item-inactive' : '' }}"
                         wire:click="$set('currentRole', '{{ $role->key }}')">
-                        <div class="">
+                        <div>
                             <!-- Role Name -->
                             <div class="role-name-container">
                                 <div
@@ -223,7 +223,7 @@
                 {{ __('Cancel') }}
             </x-secondary-button>
 
-            <x-button class="ml-3" wire:click="updateRole" wire:loading.attr="disabled">
+            <x-button wire:click="updateRole" wire:loading.attr="disabled">
                 {{ __('Save') }}
             </x-button>
         </x-slot>

@@ -1,7 +1,6 @@
 <x-app-layout :edition="$edition">
     <x-slot name="header">
-        <h4> {{ $edition->year }} / {{ $category->name }} / {{ $cluster->name }} / {{ $event->name }} </h4>
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h1 class="event-page-header-text">
             {{ $event->name }}
         </h1>
     </x-slot>
@@ -23,24 +22,24 @@
                     href="#registration" x-on:click="tab='#registration'">Registration</a>
             </div>
             <br>
-            <div x-show="tab == '#description'" x-cloak>
+            <div class="description-tab" x-show="tab == '#description'" x-cloak>
                 <p>{{ $event->description }}</p>
             </div>
 
-            <div x-show="tab == '#format'" x-cloak>
+            <div class="format-tab" x-show="tab == '#format'" x-cloak>
                 <p>
                 <ul>
                     @foreach ($event->stages as $stage)
-                        <li>
-                            <div class="text-2xl"> {{ $stage->name }} </div>
-                            <div class="text-sm"> {{ date('F j, Y, g:i a T', strtotime($stage->start_time)) }} -
+                        <li class="stage">
+                            <div class="stage-name"> {{ $stage->name }} </div>
+                            <div class="stage-duration"> {{ date('F j, Y, g:i a T', strtotime($stage->start_time)) }} -
                                 {{ date(
                                     "F
-                                                                                                                                                                                                                                                                                            j, Y, g:i a T",
+                                                                                                                                                                                                                                                                                                                                                                                                                            j, Y, g:i a T",
                                     strtotime($stage->end_time),
                                 ) }}
                             </div>
-                            <div class="text-lg"> {{ $stage->description }} </div>
+                            <div class="stage-description"> {{ $stage->description }} </div>
                         </li>
                         <br>
                     @endforeach
@@ -48,17 +47,17 @@
                 </p>
             </div>
 
-            <div x-show="tab == '#rules'" x-cloak>
+            <div class="rules-tab" x-show="tab == '#rules'" x-cloak>
                 <p>{{ $event->rules }}</p>
             </div>
 
-            <div x-show="tab == '#faq'" x-cloak>
+            <div class="faq-tab" x-show="tab == '#faq'" x-cloak>
                 <p>
                 <ul>
                     @foreach ($event->faqs as $faq)
                         <li>
-                            <div class="text-2xl"> Q: {{ $faq->question }} </div>
-                            <div class="text-sm"> A: {{ $faq->answer }} </div>
+                            <div class="faq-question"> Q: {{ $faq->question }} </div>
+                            <div class="faq-answer"> A: {{ $faq->answer }} </div>
                             <br>
                         </li>
                         <br>

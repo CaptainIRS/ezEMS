@@ -15,13 +15,13 @@
                 @endif
 
                 @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()) && !is_null($user->password))
-                    <div class="mt-10 sm:mt-0">
+                    <div class="profile-form-section">
                         @livewire('profile.update-password-form')
                     </div>
 
                     <x-section-border />
                 @else
-                    <div class="mt-10 sm:mt-0">
+                    <div class="profile-form-section">
                         @livewire('profile.set-password-form')
                     </div>
 
@@ -29,7 +29,7 @@
                 @endif
 
                 @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication() && !is_null($user->password))
-                    <div class="mt-10 sm:mt-0">
+                    <div class="profile-form-section">
                         @livewire('profile.two-factor-authentication-form')
                     </div>
 
@@ -37,7 +37,7 @@
                 @endif
 
                 @if (JoelButcher\Socialstream\Socialstream::show())
-                    <div class="mt-10 sm:mt-0">
+                    <div class="profile-form-section">
                         @livewire('profile.connected-accounts-form')
                     </div>
                 @endif

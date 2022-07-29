@@ -19,13 +19,13 @@ $confirmableId = md5($attributes->wire('then'));
         <x-slot name="content">
             {{ $content }}
 
-            <div class="mt-4" x-data="{}"
+            <div class="confirms-password-input-group" x-data="{}"
                 x-on:confirming-password.window="setTimeout(() => $refs.confirmable_password.focus(), 250)">
-                <x-input type="password" class="password-text-input" placeholder="{{ __('Password') }}"
+                <x-input type="password" class="confirms-password-text-input" placeholder="{{ __('Password') }}"
                     x-ref="confirmable_password" wire:model.defer="confirmablePassword"
                     wire:keydown.enter="confirmPassword" />
 
-                <x-input-error for="confirmable_password" class="mt-2" />
+                <x-input-error for="confirmable_password" class="confirms-password-input-error" />
             </div>
         </x-slot>
 

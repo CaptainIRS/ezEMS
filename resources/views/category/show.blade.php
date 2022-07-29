@@ -1,6 +1,6 @@
 <x-app-layout :edition="$edition">
     <x-slot name="header">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h1 class="category-page-header-text">
             {{ $category->name }} {{ $edition->year }}
         </h1>
     </x-slot>

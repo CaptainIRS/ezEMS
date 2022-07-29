@@ -28,15 +28,15 @@ Route::get('/', function () {
     return redirect()->route('edition.show', $latest_edition);
 })->name('home');
 
+Route::get('/venues', [VenueController::class, 'index'])->name('venues.index')->scopeBindings();
+Route::get('/venues/{venue:slug}', [VenueController::class, 'show'])->name('venues.show')->scopeBindings();
 Route::get('/{edition:year}', [EditionController::class, 'show'])->name('edition.show')->scopeBindings();
-Route::get('/{edition:year}/{category:slug}', [CategoryController::class, 'show'])->name('category.show')->scopeBindings();
-Route::get('/{edition:year}/{category:slug}/{cluster:slug}', [ClusterController::class, 'show'])->name('cluster.show')->scopeBindings();
-Route::get('/{edition:year}/{category:slug}/{cluster:slug}/{event:slug}', [EventController::class, 'show'])->name('event.show')->scopeBindings();
 Route::get('/{edition:year}/news', [NewsController::class, 'index'])->name('news.index')->scopeBindings();
 Route::get('/{edition:year}/news/{news:slug}', [NewsController::class, 'show'])->name('news.show')->scopeBindings();
 Route::get('/{edition:year}/sponsors', [SponsorController::class, 'index'])->name('sponsors.index')->scopeBindings();
-Route::get('/venues', [VenueController::class, 'index'])->name('venues.index')->scopeBindings();
-Route::get('/venues/{venue:slug}', [VenueController::class, 'show'])->name('venues.show')->scopeBindings();
+Route::get('/{edition:year}/{category:slug}', [CategoryController::class, 'show'])->name('category.show')->scopeBindings();
+Route::get('/{edition:year}/{category:slug}/{cluster:slug}', [ClusterController::class, 'show'])->name('cluster.show')->scopeBindings();
+Route::get('/{edition:year}/{category:slug}/{cluster:slug}/{event:slug}', [EventController::class, 'show'])->name('event.show')->scopeBindings();
 
 Route::middleware([
     'auth:sanctum',
