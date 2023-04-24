@@ -25,6 +25,9 @@ return new class() extends Migration
             $table->integer('max_participants')->nullable();
             $table->decimal('registration_fee')->nullable();
             $table->text('contact')->nullable();
+            $table->boolean('has_registration')->default(false);
+            $table->dateTime('registration_start_time')->nullable();
+            $table->dateTime('registration_end_time')->nullable();
 
             $table->foreignId('cluster_id')->constrained();
 

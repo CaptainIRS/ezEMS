@@ -20,7 +20,9 @@
         <link rel="stylesheet" href="{{ config('app.skin') }}">
     @endif
 
-    {{-- @livewireStyles --}}
+    @livewireStyles
+    @livewireScripts
+    @stack('scripts')
 </head>
 
 <body class="app">
@@ -46,7 +48,7 @@
 
     @stack('modals')
 
-    @livewireScripts
+    {{-- @livewireScripts --}}
 </body>
 
 </html>

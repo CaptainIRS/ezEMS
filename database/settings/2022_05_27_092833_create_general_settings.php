@@ -8,5 +8,6 @@ class CreateGeneralSettings extends SettingsMigration
     {
         $this->migrator->add('general.siteName', 'ezEMS');
         $this->migrator->add('general.siteActive', true);
+        $this->migrator->add('general.skin', 'https://cdn.jsdelivr.net/npm/ezems-skin-default@latest/dist/app.css');
     }
 }

@@ -35,7 +35,7 @@
                             <div class="stage-duration"> {{ date('F j, Y, g:i a T', strtotime($stage->start_time)) }} -
                                 {{ date(
                                     "F
-                                                                                                                                                                                                                                                                                                                                                                                                                            j, Y, g:i a T",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            j, Y, g:i a T",
                                     strtotime($stage->end_time),
                                 ) }}
                             </div>

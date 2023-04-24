@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->setAppUrl();
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -48,5 +49,19 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+    }
+
+    /**
+     * Configure the URL of the application.
+     *
+     * @return void
+     */
+    protected function setAppUrl()
+    {
+        if (isset($_SERVER['HTTP_HOST'])) {
+            $host = $_SERVER['HTTP_HOST'];
+            $protocol = (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443 ? 'https://' : 'http://';
+            config(['app.url' => $protocol.$host]);
+        }
     }
 }

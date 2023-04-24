@@ -10,6 +10,8 @@ class GeneralSettings extends Settings
 
     public bool $siteActive;
 
+    public string $skin;
+
     public static function group(): string
     {
         return 'general';

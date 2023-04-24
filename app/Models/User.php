@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\VerifyEmail;
 use App\Settings\GeneralSettings;
 use Database\Factories\UserFactory;
 use Eloquent;
@@ -174,5 +175,15 @@ class User extends Authenticatable implements MustVerifyEmail
             $this->{Fortify::username()},
             decrypt($this->two_factor_secret)
         );
+    }
+
+    /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail);
     }
 }

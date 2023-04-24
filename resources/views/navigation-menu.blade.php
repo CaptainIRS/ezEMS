@@ -2,33 +2,31 @@
 
 <nav x-data="{ open: false }" class="nav">
     <!-- Primary Navigation Menu -->
-    <div class="primary">
-        <div class="links">
-            <!-- Logo -->
-            <div class="logo">
-                <a href="{{ route('home') }}">
-                    <x-application-mark />
-                </a>
-            </div>
-
-            <!-- Navigation Links -->
-            <div class="nav-links">
-                <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                    {{ __('Home') }}
-                </x-nav-link>
-
-                @if (isset($edition))
-                    @foreach ($edition->categories as $category)
-                        <x-nav-link
-                            href="{{ route('category.show', ['edition' => $edition->year, 'category' => $category->slug]) }}">
-                            {{ $category->name }}
-                        </x-nav-link>
-                    @endforeach
-                @endif
-            </div>
+    <div class="primary-nav">
+        <!-- Logo -->
+        <div class="nav-logo">
+            <a href="{{ route('home') }}">
+                <x-application-mark />
+            </a>
         </div>
 
-        <div class="dropdowns">
+        <!-- Navigation Links -->
+        <div class="nav-links">
+            <a class="nav-link" href="{{ route('home') }}">
+                {{ __('Home') }}
+            </a>
+
+            @if (isset($edition))
+                @foreach ($edition->categories as $category)
+                    <a class="nav-link"
+                        href="{{ route('category.show', ['edition' => $edition->year, 'category' => $category->slug]) }}">
+                        {{ $category->name }}
+                    </a>
+                @endforeach
+            @endif
+        </div>
+
+        <div class="nav-dropdown">
             <!-- Settings Dropdown -->
             <x-dropdown>
                 <x-slot name="trigger">
@@ -124,11 +122,11 @@
 
         <!-- Hamburger -->
         <div class="nav-hamburger">
-            <button @click="open = ! open" class="hamburger-button">
-                <svg class="hamburger-button-image" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                    <path :class="{ 'hamburger-closed': open, 'hamburger-open': !open }" class="hamburger-open"
+            <button @click="open = ! open" class="nav-hamburger-button">
+                <svg class="nav-hamburger-button-image" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path :class="{ 'nav-hamburger-closed': open, 'nav-hamburger-open': !open }" class="nav-hamburger-open"
                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    <path :class="{ 'hamburger-closed': !open, 'hamburger-open': open }" class="hamburger-closed"
+                    <path :class="{ 'nav-hamburger-closed': !open, 'nav-hamburger-open': open }" class="nav-hamburger-closed"
                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
@@ -136,18 +134,17 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{ 'responsive-nav-open': open, 'responsive-nav-closed': !open }"
-        class="responsive-nav-closed responsive-nav">
-        <x-responsive-nav-link href="{{ route('home') }}">
+    <div x-show="open" x-transition class="responsive-nav">
+        <a class="responsive-nav-link" href="{{ route('home') }}">
             {{ __('Home') }}
-        </x-responsive-nav-link>
+        </a>
 
         @if (isset($edition))
             @foreach ($edition->categories as $category)
-                <x-responsive-nav-link
+                <a class="responsive-nav-link"
                     href="{{ route('category.show', ['edition' => $edition->year, 'category' => $category->slug]) }}">
                     {{ $category->name }}
-                </x-responsive-nav-link>
+                </a>
             @endforeach
         @endif
 

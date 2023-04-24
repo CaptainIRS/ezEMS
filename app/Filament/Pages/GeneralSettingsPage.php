@@ -27,6 +27,10 @@ class GeneralSettingsPage extends SettingsPage
                 ->label('Is Site Active?')
                 ->inline(false)
                 ->required(),
+            Forms\Components\TextInput::make('skin')
+                ->label('Skin')
+                ->hint('URL to the CSS file. Enter \'local\' to use the local skin for development.')
+                ->required(),
         ];
     }
 }

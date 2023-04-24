@@ -2,6 +2,7 @@
 
 namespace App\Actions\Jetstream;
 
+use App\Settings\GeneralSettings;
 use Closure;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
@@ -42,7 +43,10 @@ class InviteTeamMember implements InvitesTeamMembers
             'role' => $role,
         ]);
 
-        Mail::to($email)->send(new TeamInvitation($invitation));
+        $mailable = new TeamInvitation($invitation);
+        // TODO: Change
+        $mailable->from('admin@'.app(GeneralSettings::class)->siteName.'.com', app(GeneralSettings::class)->siteName);
+        Mail::to($email)->send($mailable);
     }
 
     /**
