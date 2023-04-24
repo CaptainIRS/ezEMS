@@ -5,6 +5,16 @@
 <a href="https://github.com/CaptainIRS/ezEMS/actions/workflows/ci.yml"><img src="https://github.com/CaptainIRS/ezEMS/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
+## Demo
+
+Demo available at https://ezems.captainirs.dev/.
+
+Admin panel is at https://ezems.captainirs.dev/admin with email `admin@admin.com` and password `password`
+
+> **Warning**
+>
+> The demo instance is seeded with fake data and is reset every 1 hour. All data will be lost.
+
 ## Setup
 
 ### Requirements
