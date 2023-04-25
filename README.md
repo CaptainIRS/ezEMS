@@ -3,6 +3,7 @@
 
 <p align="center">
 <a href="https://github.com/CaptainIRS/ezEMS/actions/workflows/ci.yml"><img src="https://github.com/CaptainIRS/ezEMS/actions/workflows/ci.yml/badge.svg"></a>
+<a href="https://codecov.io/github/CaptainIRS/ezEMS"><img src="https://codecov.io/github/CaptainIRS/ezEMS/branch/main/graph/badge.svg?token=DoL1Nnk6YU"/></a>
 </p>
 
 ## Demo
