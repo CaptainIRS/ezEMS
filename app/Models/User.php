@@ -6,8 +6,10 @@ use App\Notifications\VerifyEmail;
 use App\Settings\GeneralSettings;
 use Database\Factories\UserFactory;
 use Eloquent;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -83,16 +85,16 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
- * @mixin Eloquent
  *
  * @property-read Profile|null $profile
+ * @mixin Eloquent
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto {
-        getProfilePhotoUrlAttribute as getPhotoUrl;
+        profilePhotoUrl as getPhotoUrl;
     }
     use HasTeams;
     use HasConnectedAccounts;
@@ -141,16 +143,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the URL to the user's profile photo.
-     *
-     * @return string
      */
-    public function getProfilePhotoUrlAttribute(): string
+    public function profilePhotoUrl(): Attribute
     {
-        if (filter_var($this->profile_photo_path, FILTER_VALIDATE_URL)) {
-            return $this->profile_photo_path;
-        }
-
-        return $this->getPhotoUrl();
+        return filter_var($this->profile_photo_path, FILTER_VALIDATE_URL)
+            ? Attribute::get(fn () => $this->profile_photo_path)
+            : $this->getPhotoUrl();
     }
 
     /**
@@ -185,5 +183,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmail);
+    }
+
+    /**
+     * Determine if the user can access Filament.
+     *
+     * @return bool
+     */
+    public function canAccessFilament(): bool
+    {
+        // TODO: Fix admin check
+        return str_ends_with($this->email, '@admin.com');
     }
 }

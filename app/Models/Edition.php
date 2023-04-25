@@ -38,6 +38,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Edition whereStartTime($value)
  * @method static Builder|Edition whereUpdatedAt($value)
  * @method static Builder|Edition whereYear($value)
+ *
+ * @property-read Collection<int, \App\Models\Cluster> $clusters
+ * @property-read int|null $clusters_count
  * @mixin Eloquent
  */
 class Edition extends Model

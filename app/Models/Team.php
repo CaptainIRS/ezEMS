@@ -39,11 +39,11 @@ use Laravel\Jetstream\Team as JetstreamTeam;
  * @method static Builder|Team wherePersonalTeam($value)
  * @method static Builder|Team whereUpdatedAt($value)
  * @method static Builder|Team whereUserId($value)
- * @mixin Eloquent
  *
  * @property-read Collection|Event[] $events
  * @property-read int|null $events_count
  * @property-read int|null $payments_count
+ * @mixin Eloquent
  */
 class Team extends JetstreamTeam
 {

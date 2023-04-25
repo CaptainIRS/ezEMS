@@ -27,7 +27,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|EventTeam whereStageId($value)
  * @method static Builder|EventTeam whereTeamId($value)
  * @method static Builder|EventTeam whereUpdatedAt($value)
- * @mixin Eloquent
  *
  * @property string|null $payment_status
  * @property string|null $checkout_session
@@ -35,6 +34,7 @@ use Illuminate\Support\Carbon;
  *
  * @method static Builder|EventTeam whereCheckoutSession($value)
  * @method static Builder|EventTeam wherePaymentStatus($value)
+ * @mixin Eloquent
  */
 class EventTeam extends Pivot
 {
